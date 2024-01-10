@@ -1,0 +1,10 @@
+service/bin/_gxccd_cffi.c
+
+*.o
+*.so
+*.pyc
+*.exe
+*.dll
+*.swn
+*.swo
+*.swp

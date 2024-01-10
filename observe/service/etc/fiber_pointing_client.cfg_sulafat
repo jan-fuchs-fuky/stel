@@ -1,0 +1,31 @@
+[window]
+width = 2560
+height = 1440
+
+[pointing_camera]
+host = 192.168.193.198
+port = 7001
+
+[photometric_camera]
+host = 192.168.193.198
+port = 7002
+
+[pointing_storage]
+host = 192.168.193.208
+port = 7003
+data_dir = /data/client/pointing
+save = True
+ds9_dir =
+ds9_bin = /usr/bin/ds9
+ds9_title = pointing
+xpaset_bin = /usr/bin/xpaset
+
+[photometric_storage]
+host = 192.168.193.208
+port = 7004
+data_dir = /data/client/photometric
+save = True
+ds9_dir =
+ds9_bin = /usr/bin/ds9
+ds9_title = photometric
+xpaset_bin = /usr/bin/xpaset

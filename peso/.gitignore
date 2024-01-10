@@ -1,0 +1,7 @@
+bin/exposed
+log/*
+run/*
+
+modules/mod_*.so
+
+*.o

@@ -1,0 +1,54 @@
+Archív s programem:
+
+    username: stel
+    password: ********** (jako do Lenky katalogu Stars nebo naší WiFi sítě)
+    
+    https://stelweb.asu.cas.cz/~fuky/observe/download/observe-client-r632.tar.gz
+
+Stačí pouze rozbalit a spustit dle platformy na které to poběží:
+
+    Linux 32 bit:   observe-client-32.sh
+    Linux 64 bit:   observe-client-64.sh
+    Windows 32 bit: observe-client-32.bat
+    Windows 64 bit: observe-client-64.bat
+
+Vzdálený přístup povoluje v kopuli přímo pozorovatel konkrétnímu vzdálenému
+pozorovateli a je vždy automaticky odebrán každý den ve 12:00.
+
+Obrázek štěrbiny:
+
+    http://stelweb.asu.cas.cz/meteo/slit/
+
+Rychlý náhled na spektra:
+
+    https://stelweb.asu.cas.cz/stars/
+
+Stažení hrubých dat okamžitě po naexponování, pomocí scp/rsync z našeho
+libovolného stroje dostupného zvenčí:
+
+    myosotis.asu.cas.cz
+    isis.asu.cas.cz
+    pollux.asu.cas.cz
+    pythagoras.asu.cas.cz
+
+    /i/data2m/CCD700.RAW/INCOMING/
+    /i/data2m/OES/INCOMING/
+
+V kopuli je SIP telefon, na který lze volat od libovolného SIP
+poskytovatele např. http://www.odorik.cz:
+
+    702634@sip.odorik.cz
+
+Lze na něj volat i pomocí Skype:
+
+    1) přidáte si do kontaktů uživatele "odorik.cz"
+    2) napíšete mu přes chat zprávu "*702634"
+    3) "odorik.cz" vám zavolá zpět a spojí vás s naším VoIP telefonem
+
+Volání pomocí SIP a programu Ekiga:
+
+    http://stelweb.asu.cas.cz/~fuky/observe/ekiga/observe.html
+
+Další možnost jak komunikovat je chat přes Gmail na:
+
+    2m.telescope@gmail.com

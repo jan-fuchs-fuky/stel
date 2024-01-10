@@ -1,0 +1,84 @@
+Zkontrolovat FITs hlavicky a umoznit nastavit staticke hodnoty pro ruzne CCD.
+
+
+
+Prodlouzeni a zkraceni expozice.
+
+Zkontrolovat 1s Flat.
+
+Zkontrolovat abort, readout i pri mflat, mcomp, mzero.
+
+Definovat automaticke testy.
+
+Umoznit rucni rizeni zaverky externim programem.
+
+Zakomponovat expozimetr.
+
+Implementovat DOME FLAT:
+
+    IMAGETYP="flat"
+    OBJECT="DOME FLAT"
+
+Nova konfiguracni volba, urcujici mnozinu hodnot, reprezentujicich stav
+spektrografu, ktere se budou ukladat do hlavicky:
+
+    - coude
+    - oes
+    - all
+
+Zkontrolovat zdali jsou vsechny retezce inicializovane pomoci memset() na '\0'
+nebo alespon konci na '\0', aby nenastal problem pri pouziti fce strncpy():
+
+    Warning: If there is no null byte among the first n bytes of src, the
+    string placed in dest will not be null terminated.
+
+    A simple implementation of strncpy() might be:
+
+       char*
+       strncpy(char *dest, const char *src, size_t n){
+           size_t i;
+
+           for (i = 0 ; i < n && src[i] != '\0' ; i++)
+               dest[i] = src[i];
+           for ( ; i < n ; i++)
+               dest[i] = '\0';
+
+           return dest;
+       }
+
+    memset(key, '\0', PHDR_KEY_MAX+1);
+    strncpy(key, peso_header[i].key, PHDR_KEY_MAX);
+
+Implementovat nove prikazy, ktere budou cist zpravy z fronty, takze zpravy
+budou ulozene nejen v logu PC s daemonem, ale budou dostupne zaroven kazdemu
+klientovi az do restartu daemona:
+
+  - GET MESSAGE NEW
+  - GET MESSAGE
+
+Zkontrolovat ponechani raw image pri:
+
+    Error: fits_create_file(/share/data/DUMMY/xsf04001.fit): unknown error status
+
+CCD400 pridavat do hlavicek:
+
+    TRIMSEC = '[135:2706,180:267]'  / trimsection
+    BIASSEC = '[33:34,1:512]'      / biassec
+    COMPLAMP= 'ThAr-BS/15mA'       / Comparison arc setup
+
+    AIRPRESS=               944.62 / Atmospheric preasure in (hPa)
+    AIRHUMEX=                78.82 / Air humidity outside the dome
+    DEC     = '+23:54:14.80'       / 23.904111
+    RA      = '19:50:47.000'       / 19.8463888889
+    DOMEAZ  =               139.22 / Mean dome azimuth during observation
+    DOMETEMP=                17.81 / Temperature inside the dome
+    OUTTEMP =                16.37 / Temperature outside of the dome
+    ST      = '19:06:59'           / Local sidereal time at start of observation
+
+    DICHMIR =                    2 / Dichroic mirror number
+    EXPVAL  =                   0. / Exposure value in photon counts [Mcounts]
+    FLATTYPE= 'PROJECT '           / Flat type (Projector/Dome)
+    GRATANG =             36.63105 / 36:38
+    GRATPOS =                 5147 / Grating angle in increments
+    SPECFILT=                    1 / Spectral filter
+    TELFOCUS=                18.29 / Telescope focus (milimeters)

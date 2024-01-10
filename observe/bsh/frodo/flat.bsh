@@ -1,0 +1,33 @@
+import javax.swing.JTextField;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+import owl.main.MainApp;
+import owl.cameraAPI.CameraAPI;
+import owl.cameraAPI.ReplyException;
+
+stop = false;
+
+Flat() {
+    JTextField exposureTime_TF = new JTextField();
+    
+    final JComponent[] inputs = new JComponent[] {
+        new JLabel("Exposure time in seconds:"),
+        exposureTime_TF,
+    };
+    
+    JOptionPane.showMessageDialog(null, inputs, "Expose settings", JOptionPane.PLAIN_MESSAGE);
+    
+    int exposureTime = Integer.parseInt(exposureTime_TF.getText());
+    boolean openShutter = true;
+    String outputFilename = MainApp.mainFrame.exposePanel.getFilename();
+    
+    MainApp.mainFrame.exposePanel.fitsHeaderFrame.addField("OBSERVER", "Jan Fuchs");
+
+    Expose(exposureTime, openShutter, CameraAPI.DEINTERLACE_NONE, outputFilename);
+
+    return this;
+}
+
+flat = Flat();

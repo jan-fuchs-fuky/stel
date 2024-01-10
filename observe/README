@@ -1,0 +1,393 @@
+http://tomcat.apache.org/tomcat-6.0-doc/logging.html
+
++-----------------------+
+| Observe client - Java |
++-----------------------+
+^
+| Secure TCP/IP connections with SSL
+v
++-------------------------+
+| Observe server - Python |
++-------------------------+
+^   ^   ^   ^   ^
+|   |   |   |   | only one TCP/IP connection
+|   |   |   |   v
+|   |   |   |   +--------------------------------+
+|   |   |   |   | Telescope server - ProjectSoft |
+|   |   |   |   +--------------------------------+
+|   |   |   |
+|   |   |   | TCP/IP connections
+|   |   |   v
+|   |   |   +----------------------+
+|   |   |   | OPSO server - Python |
+|   |   |   +----------------------+
+|   |   |
+|   |   | TCP/IP connections
+|   |   v
+|   |   +-------------------+
+|   |   | CCD400 server - C |
+|   |   +-------------------+
+|   |
+|   | TCP/IP connections
+|   v
+|   +-------------------+
+|   | CCD700 server - C |
+|   +-------------------+
+|
+| TCP/IP connections
+v
++----------------+
+| OES server - C |
++----------------+
+
+
+
+liblog4c-dev - http://log4c.sourceforge.net/
+libxmlrpc-c3-dev - http://xmlrpc-c.sourceforge.net/
+
+
+
+$ echo -n "heslo:salt" |sha512sum
+
+$ DERBY_HOME=~/java/_derby/db-derby-10.4.1.3-bin ~/java/_derby/db-derby-10.4.1.3-bin/bin/ij
+> CONNECT 'jdbc:derby:observeDB;';
+> run 'sql/insert_admin.sql';
+
+
+
+$ xmlrpc http://primula:9999/RPC2 telescope_info
+Result:
+
+Struct of 8 members:
+  Key:   String: 'glst'
+  Value: String: '0 1 0 0 0 1 4 4 4 511 0 0 0 0'
+  Key:   String: 'trrd'
+  Value: String: '143716.800 +800119.80 0'
+  Key:   String: 'trhd'
+  Value: String: '9.9946 80.0065'
+  Key:   String: 'trgv'
+  Value: String: '-0.2 -6.3'
+  Key:   String: 'trus'
+  Value: String: '0.0000 0.0000'
+  Key:   String: 'dopo'
+  Value: String: '49.63'
+  Key:   String: 'trcs'
+  Value: String: '0'
+  Key:   String: 'fopo'
+  Value: String: '18.85'
+
+
+
+# vim /etc/apt/sources.list
+deb http://ftp.cz.debian.org/debian/ experimental main non-free contrib
+# aptitude update && aptitude install libxmlrpc-c3-dev=1.16.07-1
+
+
+
+# OBSERVED_DIR=$PWD ./init.d/observed start
+
+*** Tomcat ***
+
+http://tomcat.apache.org/migration-7.html
+http://tomcat.apache.org/migration-8.html
+http://tomcat.apache.org/migration-85.html
+
+# vim /etc/default/tomcat6
+JAVA_HOME=/usr/lib/jvm/java-6-sun
+
+# rsync -a class /var/lib/tomcat6/webapps/observe/WEB-INF/classes
+# rsync -a lib /var/lib/tomcat6/webapps/observe/WEB-INF/lib
+
+# vim /var/lib/tomcat6/webapps/observe/WEB-INF/web.xml 
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+    <display-name>Observe</display-name>
+    <servlet>
+        <servlet-name>Jersey REST Service</servlet-name>
+        <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+
+        <init-param>
+          <param-name>com.sun.jersey.config.property.packages</param-name>
+          <param-value>cz.cas.asu.stelweb.fuky.observe.resources;cz.cas.asu.stelweb.fuky.observe.auth</param-value>
+        </init-param>
+
+        <init-param> 
+          <param-name>com.sun.jersey.spi.container.ContainerRequestFilters</param-name> 
+          <param-value>cz.cas.asu.stelweb.fuky.observe.auth.SecurityFilter</param-value> 
+        </init-param>
+
+        <init-param> 
+          <param-name>com.sun.jersey.spi.container.filter.ResourceFilterFactory</param-name> 
+          <param-value>com.sun.jersey.api.container.filter.RolesAllowedResourceFilterFactory</param-value> 
+        </init-param>
+
+<!--
+        <init-param> 
+          <param-name>com.sun.jersey.config.property.resourceConfigClass</param-name> 
+          <param-value>com.sun.jersey.api.core.PackagesResourceConfig</param-value> 
+        </init-param>
+-->
+
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Jersey REST Service</servlet-name>
+        <url-pattern>/observe/*</url-pattern>
+    </servlet-mapping>
+</web-app>
+
+# chown -R tomcat6.tomcat6 /var/lib/tomcat6/webapps/observe
+
+# vim /etc/tomcat6/Catalina/localhost/observe.xml
+<Context path="/observe" 
+	docBase="/var/lib/tomcat6/webapps/observe" />
+
+# /etc/init.d/tomcat6 restart
+
+
+
+http://tomcat.apache.org/tomcat-6.0-doc/realm-howto.html
+http://www.mysql.com/downloads
+
+mysql-connector-java-5.1.17.zip
+
+Nainstalovat:
+
+    # aptitude install libmysql-java
+
+nebo:
+
+    # cp mysql-connector-java-5.1.17-bin.jar /usr/share/java
+
+# cd /usr/share/tomcat6/lib/
+# ln -s ../../java/mysql-connector-java-5.1.17-bin.jar .
+
+# vim /etc/tomcat6/server.xml
+    <Realm className="org.apache.catalina.realm.JDBCRealm"
+         digest="MD5"
+         driverName="com.mysql.jdbc.Driver"
+         connectionURL="jdbc:mysql://localhost:3306/observe?user=root&amp;password=heslo"
+         userTable="users" userNameCol="user_name" userCredCol="user_pass"
+         userRoleTable="user_roles" roleNameCol="role_name" />
+
+    <Connector port="8443" protocol="HTTP/1.1" SSLEnabled="true"
+               maxThreads="150" scheme="https" secure="true"
+               clientAuth="false" sslProtocol="TLS" />
+
+create table users (
+  user_name         varchar(15) not null primary key,
+  user_pass         varchar(15) not null
+);
+
+create table user_roles (
+  user_name         varchar(15) not null,
+  role_name         varchar(15) not null,
+  primary key (user_name, role_name)
+);
+
+# cd /usr/share/tomcat6/
+# keytool -genkey -alias tomcat -keyalg RSA -keystore .keystore
+
+specify a password value of "changeit"
+
+Debug log:
+
+    # vim /etc/tomcat6/logging.properties
+    org.apache.catalina.level=ALL
+
+Access log:
+
+    # vim /etc/tomcat6/server.xml
+    <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"  
+           prefix="localhost_access_log." suffix=".txt" pattern="common" resolveHosts="false"/>
+
+
+SEVERE: Failed to initialize connector [Connector[HTTP/1.1-443]]
+LifecycleException:  Protocol handler initialization failed: java.io.FileNotFoundException: /usr/share/tomcat6/.keystore (No such file or directory)
+
+    Tomcat 6: Binding to a Privileged Port on Debian/Ubuntu:
+    http://thelowedown.wordpress.com/2010/08/17/tomcat-6-binding-to-a-privileged-port-on-debianubuntu/
+
+    # vim /etc/default/tomcat6
+    AUTHBIND=yes
+
+*** Errors ***
+
+http://stackoverflow.com/questions/30119664/how-to-configure-tomcat-7-with-ssl-on-ubuntu-14-the-unanswered-questions
+
+    To address this part of the above problem reported in catalina.out...
+    
+    SEVERE: Failed to initialize end point associated with ProtocolHandler ["http-bio-443"]
+    java.net.SocketException: No such file or directory
+
+    For me this was caused by tomcat not being allowed to bind to port 443, and
+    was nothing to do with the keystore/certificates.
+    
+    I fixed it by running...
+    
+        # touch /etc/authbind/byport/443 
+        # chmod 500 /etc/authbind/byport/443 
+        # chown tomcat7 /etc/authbind/byport/443
+
+    if you don't have authbind installed, install it via
+    
+        # apt-get install authbind
+
+Caused by:
+com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: Data
+source rejected establishment of connection,  message from server: "Too many
+connections"
+
+http://www.coderanch.com/t/497782/ORM/java/Too-many-connections
+
+    I had solved the problem by using "mysql.allow_persistent=Off" in configuration file to persist data
+    and it's closed connection wheather connection is opened.
+    
+    Another way to use "set-variable=max_connections=250" this syntax in same configuration file to
+    manage maximum connection.
+
+http://www.devdaily.com/blog/post/mysql/how-show-open-database-connections-mysql
+
+    mysql> show status like 'Conn%';
+    +---------------+-------+
+    | Variable_name | Value |
+    +---------------+-------+
+    | Connections   | 273   | 
+    +---------------+-------+
+    1 row in set (0.00 sec)
+
+    mysql> show status like '%onn%';
+    +--------------------------+-------+
+    | Variable_name            | Value |
+    +--------------------------+-------+
+    | Aborted_connects         | 15    | 
+    | Connections              | 273   | 
+    | Max_used_connections     | 101   | 
+    | Ssl_client_connects      | 0     | 
+    | Ssl_connect_renegotiates | 0     | 
+    | Ssl_finished_connects    | 0     | 
+    | Threads_connected        | 25    | 
+    +--------------------------+-------+
+    7 rows in set (0.00 sec)
+
+    mysql> show processlist;
+    +-----+------+-----------------+---------+---------+------+-------+------------------+
+    | Id  | User | Host            | db      | Command | Time | State | Info             |
+    +-----+------+-----------------+---------+---------+------+-------+------------------+
+    | 248 | root | localhost:34364 | observe | Sleep   |   27 |       | NULL             | 
+    | 249 | root | localhost:34365 | observe | Sleep   | 1903 |       | NULL             | 
+    | 250 | root | localhost:34374 | observe | Sleep   | 1886 |       | NULL             | 
+    | 251 | root | localhost:34397 | observe | Sleep   | 1827 |       | NULL             | 
+    | 252 | root | localhost:34421 | observe | Sleep   | 1767 |       | NULL             | 
+    | 253 | root | localhost:34445 | observe | Sleep   | 1707 |       | NULL             | 
+    | 254 | root | localhost:45794 | observe | Sleep   | 1646 |       | NULL             | 
+    | 255 | root | localhost:45818 | observe | Sleep   | 1586 |       | NULL             | 
+    | 256 | root | localhost:45841 | observe | Sleep   | 1527 |       | NULL             | 
+    | 257 | root | localhost:45866 | observe | Sleep   | 1467 |       | NULL             | 
+    | 258 | root | localhost:45889 | observe | Sleep   | 1407 |       | NULL             | 
+    | 259 | root | localhost:40382 | observe | Sleep   | 1347 |       | NULL             | 
+    | 260 | root | localhost:40406 | observe | Sleep   | 1286 |       | NULL             | 
+    | 261 | root | localhost:40430 | observe | Sleep   | 1227 |       | NULL             | 
+    | 262 | root | localhost:40454 | observe | Sleep   | 1167 |       | NULL             | 
+    | 263 | root | localhost:40476 | observe | Sleep   | 1107 |       | NULL             | 
+    | 264 | root | localhost:42970 | observe | Sleep   | 1046 |       | NULL             | 
+    | 265 | root | localhost:42995 | observe | Sleep   |  987 |       | NULL             | 
+    | 266 | root | localhost:43019 | observe | Sleep   |  927 |       | NULL             | 
+    | 267 | root | localhost:43042 | observe | Sleep   |  867 |       | NULL             | 
+    | 268 | root | localhost:43067 | observe | Sleep   |  807 |       | NULL             | 
+    | 269 | root | localhost:35916 | observe | Sleep   |  746 |       | NULL             | 
+    | 270 | root | localhost:35917 | observe | Sleep   |  746 |       | NULL             | 
+    | 271 | root | localhost:49434 | observe | Sleep   |  346 |       | NULL             | 
+    | 272 | root | localhost       | NULL    | Query   |    0 | NULL  | show processlist | 
+    +-----+------+-----------------+---------+---------+------+-------+------------------+
+    25 rows in set (0.01 sec)
+
+    # mysqladmin status
+    Uptime: 96592  Threads: 25  Questions: 15495  Slow queries: 0  Opens: 152
+    Flush tables: 2  Open tables: 19  Queries per second avg: 0.160
+
+Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: The last
+packet successfully received from the server was 52 421 389 milliseconds ago.
+The last packet sent successfully to the server was 52 421 389 milliseconds
+ago. is longer than the server configured value of 'wait_timeout'. You should
+consider either expiring and/or testing connection validity before use in your
+application, increasing the server configured values for client timeouts, or
+using the Connector/J connection property 'autoReconnect=true' to avoid this
+problem.
+
+    http://codingclues.eu/2009/commysqljdbcexceptionsjdbc4communicationsexception/
+
+    <property name="connection.autoReconnect">true</property>
+    <property name="connection.autoReconnectForPools">true</property>
+    <property name="connection.is-connection-validation-required">true</property>
+
+    <property name="hibernate.c3p0.min_size" value="3" />
+    <property name="hibernate.c3p0.max_size" value="50" />
+    <property name="hibernate.c3p0.timeout" value="1800" />
+    <property name="hibernate.c3p0.max_statements" value="50" />
+    <!–- this property forces the revalidation of a connection after the given amount of time (in secs) –->
+    <!–- it must be set to LESS than the wait_timout setting for the mysql server (this setting defaults to 28800 secs (8 hours)) –->
+    <property name="hibernate.c3p0.idle_test_period" value="28680" />
+
+    See manual http://dev.mysql.com/doc/mysql/en/show-variables.html
+    'SHOW VARIABLES LIKE' returns value of the session variables.
+    To return value of global variable you can use 'show global variables'.
+
+    mysql> SHOW VARIABLES LIKE 'wait_%'; 
+    +---------------+-------+
+    | Variable_name | Value |
+    +---------------+-------+
+    | wait_timeout  | 28800 | 
+    +---------------+-------+
+    1 row in set (0.00 sec)
+
+    mysql> SELECT @@GLOBAL.wait_timeout;
+    +-----------------------+
+    | @@GLOBAL.wait_timeout |
+    +-----------------------+
+    |                 28800 | 
+    +-----------------------+
+    1 row in set (0.00 sec)
+
+    mysql> SET GLOBAL wait_timeout=30;
+    Query OK, 0 rows affected (0.00 sec)
+
+AstroPCI:
+
+    ERROR 0x544F5554 = TOUT   A timeout has occurred. The destination board has failed to respond.
+
+*** dependencies ***
+
+$ ant jdeps -Djdeps.option="-R -s" |grep exec |cut -f9 -d " " |sort |uniq
+./class
+not
+
+/opt/jdk1.8.0_40/jre/lib/jce.jar
+/opt/jdk1.8.0_40/jre/lib/rt.jar
+
+libantlr-java                 - /var/fasthome/fuky/git/observe/lib/java/antlr-2.7.6.jar
+libasm3-java                  - /var/fasthome/fuky/git/observe/lib/java/asm-3.1.jar
+libcommons-codec-java         - /var/fasthome/fuky/git/observe/lib/java/commons-codec-1.4.jar
+libcommons-collections3-java  - /var/fasthome/fuky/git/observe/lib/java/commons-collections-3.1.jar
+libdom4j-java                 - /var/fasthome/fuky/git/observe/lib/java/dom4j-1.6.1.jar
+libfreemarker-java            - /var/fasthome/fuky/git/observe/lib/java/freemarker.jar
+libhibernate3-java            - /var/fasthome/fuky/git/observe/lib/java/hibernate3.jar
+libjavassist-java             - /var/fasthome/fuky/git/observe/lib/java/javassist-3.12.0.GA.jar
+libjsr311-api-java            - /var/fasthome/fuky/git/observe/lib/java/jsr311-api-1.1.jar
+jta                           - /var/fasthome/fuky/git/observe/lib/java/jta-1.1.jar
+junit4                        - /var/fasthome/fuky/git/observe/lib/java/junit-4.11-SNAPSHOT-20120416-1530.jar
+libmail-java                  - /var/fasthome/fuky/git/observe/lib/java/mail.jar
+libslf4j-java                 - /var/fasthome/fuky/git/observe/lib/java/slf4j-api-1.7.2.jar
+libslf4j-java                 - /var/fasthome/fuky/git/observe/lib/java/slf4j-nop-1.7.2.jar
+libws-commons-util-java       - /var/fasthome/fuky/git/observe/lib/java/ws-commons-util-1.0.2.jar
+libxmlrpc3-client-java        - /var/fasthome/fuky/git/observe/lib/java/xmlrpc-client-3.1.3.jar
+libxmlrpc3-common-java        - /var/fasthome/fuky/git/observe/lib/java/xmlrpc-common-3.1.3.jar
+
+NOT FOUND                     - /var/fasthome/fuky/git/observe/lib/java/jersey-client-1.3.jar
+NOT FOUND                     - /var/fasthome/fuky/git/observe/lib/java/jersey-core-1.3.jar
+NOT FOUND                     - /var/fasthome/fuky/git/observe/lib/java/jersey-server-1.3.jar
+NOT FOUND                     - /var/fasthome/fuky/git/observe/lib/java/grizzly-servlet-webserver-1.9.18-i.jar
+NOT FOUND                     - /var/fasthome/fuky/git/observe/lib/java/hibernate-jpa-2.0-api-1.0.1.Final.jar
+NOT FOUND                     - /var/fasthome/fuky/git/observe/lib/java/jsky-coords.jar
+NOT FOUND                     - /var/fasthome/fuky/git/observe/lib/java/jsky-elevation-plot.jar
+NOT FOUND                     - /var/fasthome/fuky/git/observe/lib/java/jsky-util.jar

@@ -1,0 +1,127 @@
+URL:
+
+    http://heasarc.nasa.gov/docs/software/fitsio/c/c_user/cfitsio.html
+
+Kontrola konfiguracnich souboru:
+
+    $ xmllint exposed.xml
+    $ xmllint peso.xml
+
+Server se po pripojeni klienta ohlasi:
+
+    +OK Hello, this is Ondrejov PESO server
+
+Pokud klient neposle 60s zadna data, tak s nim server ukonci spojeni.
+
+Autorizace:
+
+    USER tcsuser
+    +OK tcsuser is a valid username
+    PASS ***
+    +OK authentication succeeded
+
+Zmena zaznamu v hlavicce:
+
+    SETKEY OBSERVER = Jan Fuchs / Observers
+
+Precteni zaznamu z hlavicky:
+
+    GETKEY OBSERVER
+
+Precteni cele hlavicky:
+
+    GETALLKEYS
+
+Ukonceni spojeni:
+
+    QUIT
+    +OK close connection
+
+Pri zadani neznameho prikazu vrati:
+
+    -ERR unknown command
+
+Prazdny prikaz:
+
+    NOOP
+    +OK
+
+Vystupni cesta:
+
+    GET PATH
+    SET PATH path
+    GET ARCHIVEPATH
+    SET ARCHIVEPATH path
+
+    GET PATHS
+    GET ARCHIVEPATHS
+
+Archivace dat na serveru:
+
+    GET ARCHIVE
+    SET ARCHIVE 0
+    SET ARCHIVE 1
+
+Vrati neprectene zpravy:
+
+    GET MESSAGE NEW
+
+Vrati vsechny zpravy:
+
+    GET MESSAGE
+
+Vrati x poslednich zprav:
+
+    GET MESSAGE x
+
+Spusteni expozice:
+
+    EXPOSE exptime expcount
+
+Preruseni expozice:
+
+    ABORT
+
+Predcasne vycteni cipu:
+
+    READOUT
+
+Pridani casu k expozici:
+
+    ADDTIME time_in_sec
+
+Teplota CCD:
+
+    SET CCDTEMP
+    GET CCDTEMP -110.5
+
+Stav CCD:
+
+    GET CCDSTATE
+
+        ready
+        expose elapsed_time time
+        readout elapsed_time time
+
+V jakem zarizeni je CCD pouzito:
+
+    GET INSTRUMENT
+
+**************
+*** SAURON ***
+**************
+
+- je treba nainstalovat libpvcam.so do /usr/lib
+
+Logovani:
+
+    # vim /etc/rsyslog.conf
+    $FileCreateMode 0644
+    local1.*   /var/log/peso.log
+
+    $ ls -l /opt/peso/log/peso.log
+    /opt/peso/log/peso.log -> /var/log/peso.log
+
+PID:
+
+    /opt/peso/run/exposed.pid

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4c SYSTEM "">
+
+<log4c version="1.2.1">
+
+    <config>
+        <bufsize>0</bufsize>
+        <debug level="2" />
+        <nocleanup>0</nocleanup>
+        <reread>1</reread>
+    </config>
+
+    <rollingpolicy name="telescoped_rollingpolicy" type="sizewin" maxsize="10100100" maxnum="10" />
+    <appender name="telescoped_fileappender" type="rollingfile" logdir="/opt/telescoped/log" prefix="telescoped.log" layout="dated" rollingpolicy="telescoped_rollingpolicy" />
+    <category name="telescoped" priority="debug" appender="telescoped_fileappender"/>
+
+</log4c>

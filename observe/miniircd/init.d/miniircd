@@ -1,0 +1,59 @@
+#!/bin/bash
+
+### BEGIN INIT INFO
+# Provides:          miniircd
+# Required-Start:    $local_fs $remote_fs $network $syslog $named
+# Required-Stop:     $local_fs $remote_fs $network $syslog $named
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# X-Interactive:     false
+# Short-Description: Start/stop miniircd
+### END INIT INFO
+
+#set -e
+
+. /lib/lsb/init-functions
+
+if [[ ! -d "$MINIIRCD_DIR" ]]; then
+    export MINIIRCD_DIR=/opt/miniircd
+fi
+
+if [[ "$USER" == "root" ]] || [[ -z "$USER" ]]; then
+    export HOME=/root
+fi
+
+PATH=/bin:/usr/bin:/sbin:/usr/sbin
+DAEMON="${MINIIRCD_DIR}/bin/miniircd"
+PIDFILE="${MINIIRCD_DIR}/run/miniircd.pid"
+PASSWORD_FILE="/etc/miniircd/miniircd.pwd"
+
+# Arguments to atd
+#
+ARGS="--password-file ${PASSWORD_FILE} --pidfile=${PIDFILE} --verbose --logdir=/log/channel --setuid=miniircd --ssl-pem-file=/stel.asu.cas.cz.pem --chroot=/home/miniircd --log-file=/log/miniircd.log -d"
+
+test -x $DAEMON || exit 0
+
+case "$1" in
+    start)
+        log_action_begin_msg "Starting miniircd daemon"
+        start-stop-daemon --start --quiet \
+            --exec "$DAEMON" -- $ARGS
+        log_action_end_msg $?
+        ;;
+    stop)
+        log_action_begin_msg "Stopping miniircd daemon"
+        start-stop-daemon --stop --quiet --pidfile "$PIDFILE" --remove-pidfile
+        log_action_end_msg $?
+        ;;
+    restart|force-reload)
+        "$0" stop
+        sleep 2
+        "$0" start
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart|force-reload}"
+        exit 1
+        ;;
+esac
+
+exit 0

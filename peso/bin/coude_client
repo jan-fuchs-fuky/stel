@@ -1,0 +1,158 @@
+#!/usr/bin/python2.4
+# -*- coding: utf-8 -*-
+
+#
+# Author: Jan Fuchs <fuky@sunstel.asu.cas.cz>
+# $Date$
+# $Rev$                                          
+#
+
+import sys
+import time
+import getopt
+import signal
+import traceback
+import xmlrpclib
+
+class App:
+    def __init__(self):
+        options = "h"
+        long_options = ["get", "get-loop", "flat=", "comp=", "exposimeter=", "shutter400=", "help"]
+        try:
+            opts, args = getopt.getopt(sys.argv[1:], options, long_options)
+        except getopt.GetoptError, err:
+            print "%s\n" % str(err)
+            self.help()
+            sys.exit(1)
+
+        signal.signal(signal.SIGALRM, self.handler)
+
+        self.proxy = xmlrpclib.ServerProxy("http://primula:8888")
+
+        signal.alarm(15)
+
+        for o, a in opts:
+            if (o == "--get"):
+                self.get()
+            elif (o == "--get-loop"):
+                self.get_loop()
+            elif (o == "--flat"):
+                self.flat(a)
+            elif (o == "--comp"):
+                self.comp(a)
+            elif (o == "--exposimeter"):
+                self.exposimeter(a)
+            elif (o == "--shutter400"):
+                self.shutter400(a)
+            elif (o in ("-h", "--help")):
+                self.help()
+                sys.exit(0)
+
+        signal.alarm(0)
+        print "EXIT"
+        sys.exit(0)
+
+    def help(self):
+        print \
+"""Usage: coude_client [options]
+Options:
+  -h, --help
+      --get
+      --get-loop
+      --flat {0, 1}         0 = OFF, 1 = ON
+      --comp {0, 1}         0 = OFF, 1 = ON
+      --exposimeter {0, 1}  0 = OFF, 1 = ON"""
+
+    def get_bin_value(self, arg):
+        if (arg not in ["0", "1"]):
+            print "value %s is not supported" % arg
+            sys.exit(1)
+
+        return int(arg)
+
+    def set_light(self, light, value):
+        self.proxy.spectrograph_execute("SPCH %i %i" % (light, value))
+
+        # calibration
+        if (value == 1):
+            star_calib = 2
+        # star
+        else:
+            star_calib = 1
+
+        self.proxy.spectrograph_execute("SPCH 6 %i" % star_calib)
+
+    def light_success(self, light, value):
+        glst = self.proxy.spectrograph_info()["GLST"].split()
+
+        # 0 = unknown
+        # 1 = star
+        # 2 = calibration
+        # 3 = moving
+        # 4 = timeout
+        star_calib = glst[5]
+
+        # 0 = off
+        # 1 = on
+        light_value = glst[light-1]
+
+        if (value == 1) and (star_calib == "2") and (light_value == "1"):
+            return True
+        elif (value == 0) and (star_calib == "1") and (light_value == "0"):
+            return True
+
+        return False
+
+    def get(self):
+        pass
+
+    def get_loop(self):
+        pass
+
+    def flat(self, arg):
+        value = self.get_bin_value(arg)
+
+        self.set_light(8, value)
+        while (not self.light_success(8, value)):
+            time.sleep(0.5)
+
+    def comp(self, arg):
+        value = self.get_bin_value(arg)
+
+        self.set_light(9, value)
+        while (not self.light_success(9, value)):
+            time.sleep(0.5)
+
+    def exposimeter(self, arg):
+        pass
+
+    def shutter400(self, arg):
+        value = self.get_bin_value(arg)
+
+        if (value == 0):
+            value = 2
+
+        self.proxy.spectrograph_execute("SPCH 12 %i" % value)
+
+        shutter = None
+        while (shutter != value):
+            shutter = int(self.proxy.spectrograph_execute("SPGS 12"))
+            time.sleep(0.1)
+
+    def handler(self, signum, frame):
+        print "Timeout"
+        sys.exit(1)
+
+def main():
+    App()
+
+if __name__ == "__main__":
+    try:
+        main()
+    except SystemExit:
+        raise
+    except Exception:
+        exc_type, exc_value, exc_traceback = sys.exc_info()
+        err_msg = " ".join(traceback.format_exception_only(exc_type, exc_value)).strip()
+        print err_msg
+        sys.exit(1)

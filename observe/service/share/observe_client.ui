@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1221</width>
+    <height>1045</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>ObserveClient</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QWidget" name="main_widget" native="true">
+      <layout class="QGridLayout" name="gridLayout_4">
+       <item row="0" column="0">
+        <widget class="QWidget" name="widget_2" native="true">
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>Instrument:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="instrument_CB">
+            <item>
+             <property name="text">
+              <string>CCD700</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>OES</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Photometry</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QWidget" name="widget_3" native="true">
+         <layout class="QGridLayout" name="gridLayout_2">
+          <item row="5" column="3">
+           <widget class="QComboBox" name="data_path_CB">
+            <item>
+             <property name="text">
+              <string>INCOMING</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>TECH</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="0" column="3">
+           <widget class="QLabel" name="ra_LB">
+            <property name="text">
+             <string>unknown</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>Object:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <widget class="QLineEdit" name="observers_LE">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="3">
+           <widget class="QLabel" name="tracking_LB">
+            <property name="text">
+             <string>unknown</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="3">
+           <widget class="QLabel" name="position_LB">
+            <property name="text">
+             <string>unknown</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QLabel" name="count_repeat_LB">
+            <property name="text">
+             <string>unknown</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLabel" name="exposure_length_LB">
+            <property name="text">
+             <string>unknown</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="label_16">
+            <property name="text">
+             <string>Count repeat:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="5">
+           <widget class="QLabel" name="focus_position_LB">
+            <property name="text">
+             <string>unknown</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QLabel" name="label_8">
+            <property name="text">
+             <string>DEC:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="4">
+           <widget class="QLabel" name="label_18">
+            <property name="text">
+             <string>Cameras position:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="2">
+           <widget class="QLabel" name="label_6">
+            <property name="text">
+             <string>Data path:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLabel" name="object_LB">
+            <property name="text">
+             <string>unknown</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="2">
+           <widget class="QLabel" name="label_14">
+            <property name="text">
+             <string>Tracking:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="2">
+           <widget class="QLabel" name="label_4">
+            <property name="text">
+             <string>Position:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_3">
+            <property name="text">
+             <string>Target:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_12">
+            <property name="text">
+             <string>Exposure length:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QLabel" name="label_7">
+            <property name="text">
+             <string>RA:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLabel" name="target_LB">
+            <property name="text">
+             <string>unknown</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="4">
+           <widget class="QLabel" name="label_19">
+            <property name="text">
+             <string>Focus position:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="5">
+           <widget class="QLabel" name="camera_position_LB">
+            <property name="text">
+             <string>unknown</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="3">
+           <widget class="QLabel" name="dec_LB">
+            <property name="text">
+             <string>unknown</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0">
+           <widget class="QLabel" name="label_9">
+            <property name="text">
+             <string>Observers:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="name01_LB">
+            <property name="text">
+             <string>name01</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QLabel" name="value01_LB">
+            <property name="text">
+             <string>value01</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="2">
+           <widget class="QLabel" name="name02_LB">
+            <property name="text">
+             <string>name02</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="3">
+           <widget class="QLabel" name="value02_LB">
+            <property name="text">
+             <string>value02</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="4">
+           <widget class="QLabel" name="label_5">
+            <property name="text">
+             <string>Current row:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="5">
+           <widget class="QLabel" name="current_row_LB">
+            <property name="text">
+             <string>unknown</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="4">
+           <widget class="QLabel" name="name03_LB">
+            <property name="text">
+             <string>name03</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="5">
+           <widget class="QLabel" name="value03_LB">
+            <property name="text">
+             <string>value03</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QTableWidget" name="observe_TW"/>
+       </item>
+       <item row="2" column="0">
+        <widget class="QWidget" name="widget" native="true">
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QPushButton" name="start_BT">
+            <property name="text">
+             <string>Start</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="stop_BT">
+            <property name="text">
+             <string>Stop</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="add_row_BT">
+            <property name="text">
+             <string>Add row</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="remove_row_BT">
+            <property name="text">
+             <string>Remove row</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1221</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuMain">
+    <property name="title">
+     <string>Mai&amp;n</string>
+    </property>
+    <addaction name="actionLoad_from_file"/>
+    <addaction name="actionLoad_from_SSH"/>
+    <addaction name="actionLoad_from_Stars"/>
+    <addaction name="actionLoad_from_URL"/>
+    <addaction name="separator"/>
+    <addaction name="actionExport_to_file"/>
+    <addaction name="actionExport_to_SSH"/>
+    <addaction name="actionExport_to_Stars"/>
+    <addaction name="actionExport_to_URL"/>
+   </widget>
+   <widget class="QMenu" name="menuSounds">
+    <property name="title">
+     <string>So&amp;unds</string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="actionError"/>
+    <addaction name="actionWarning"/>
+    <addaction name="actionInfo"/>
+   </widget>
+   <widget class="QMenu" name="menuShow">
+    <property name="title">
+     <string>Show</string>
+    </property>
+    <addaction name="actionLog"/>
+   </widget>
+   <addaction name="menuMain"/>
+   <addaction name="menuSounds"/>
+   <addaction name="menuShow"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionEnable_ALL">
+   <property name="text">
+    <string>All</string>
+   </property>
+  </action>
+  <action name="actionDisable_ALL">
+   <property name="text">
+    <string>Disable ALL</string>
+   </property>
+  </action>
+  <action name="actionError">
+   <property name="text">
+    <string>&amp;Error</string>
+   </property>
+  </action>
+  <action name="actionWarning">
+   <property name="text">
+    <string>&amp;Warning</string>
+   </property>
+  </action>
+  <action name="actionInfo">
+   <property name="text">
+    <string>&amp;Info</string>
+   </property>
+  </action>
+  <action name="actionLoad_from_file">
+   <property name="text">
+    <string>&amp;Load from file</string>
+   </property>
+  </action>
+  <action name="actionLoad_from_SSH">
+   <property name="text">
+    <string>Load &amp;from SSH</string>
+   </property>
+  </action>
+  <action name="actionLoad_from_Stars">
+   <property name="text">
+    <string>Load from &amp;Stars</string>
+   </property>
+  </action>
+  <action name="actionLoad_from_URL">
+   <property name="text">
+    <string>Load from &amp;URL</string>
+   </property>
+  </action>
+  <action name="actionExport_to_file">
+   <property name="text">
+    <string>&amp;Export to file</string>
+   </property>
+  </action>
+  <action name="actionExport_to_SSH">
+   <property name="text">
+    <string>E&amp;xport to SSH</string>
+   </property>
+  </action>
+  <action name="actionExport_to_Stars">
+   <property name="text">
+    <string>Ex&amp;port to Stars</string>
+   </property>
+  </action>
+  <action name="actionExport_to_URL">
+   <property name="text">
+    <string>Exp&amp;ort to URL</string>
+   </property>
+  </action>
+  <action name="actionLog">
+   <property name="text">
+    <string>&amp;Log</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

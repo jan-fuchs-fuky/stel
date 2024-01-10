@@ -1,0 +1,9 @@
+#!/bin/bash
+
+/opt/exposed/bin/spectrograph_execute.py 'SPCH 3 1' 'SPCH 21 1'
+
+cd /opt/observe-client-r575
+#cd /opt/observe-client-r553
+#cd /opt/observe-client-r548
+./observe-client.sh
+cd -

@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<setup_exposure_list>
+  <setup_exposure>
+    <name>default</name>
+    <ga>-1</ga>
+    <dm>-1</dm>
+    <sf>-1</sf>
+    <flat>40</flat>
+    <comp>140</comp>
+    <range>-1</range>
+    <ccd>oes</ccd>
+  </setup_exposure>
+</setup_exposure_list>
+

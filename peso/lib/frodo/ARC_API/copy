@@ -1,0 +1,3 @@
+#!/bin/bash
+
+find 2.0 3.0 -name '*.so' -exec cp -v {} ./lib${1} \;

@@ -1,0 +1,79 @@
+#! /usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+import sys
+import subprocess
+import xmlrpc.client
+
+class ExposeG2:
+
+    def __init__(self, object_name, exptime, count):
+        telescope_state = self.get_telescope_status()
+        toptec_state = self.get_toptec_state()
+
+        print(telescope_state)
+        print(toptec_state)
+
+        cmd = [
+            "/opt/toptec/expose_g1",
+            object_name,
+            telescope_state["ra"],
+            telescope_state["dec"],
+            telescope_state["position"],
+            telescope_state["TRGV"],
+            telescope_state["TRHD"],
+            toptec_state["focus_position"],
+            toptec_state["camera_position"],
+            exptime,
+            count,
+        ]
+
+        subprocess.call(cmd)
+
+    def get_telescope_status(self):
+        proxy = xmlrpc.client.ServerProxy("http://192.168.193.193:9999")
+
+        values = proxy.telescope_execute("TRRD")
+
+        # 095006.487 -390212.10 0
+        ra, dec, position = values.split()
+
+        telescope_state = {
+            "ra": ra,
+            "dec": dec,
+            "position": position,
+        }
+
+        telescope_state["TRHD"] = proxy.telescope_execute("TRHD").replace(" ", "_")
+        telescope_state["TRGV"] = proxy.telescope_execute("TRGV").replace(" ", "_")
+
+        return telescope_state
+
+    def get_toptec_state(self):
+        proxy = xmlrpc.client.ServerProxy("http://192.168.193.198:6000")
+
+        values = proxy.toptec_get_values()
+
+        focus_position = "%i" % values["focus_position"]
+        camera_position = "%i" % values["cameras_position"]
+
+        toptec_state = {
+            "focus_position": focus_position,
+            "camera_position": camera_position,
+        }
+
+        return toptec_state
+
+def main():
+    if (len(sys.argv) != 4):
+        print("Usage: %s OBJECT EXPTIME COUNT" % (sys.argv[0]))
+        sys.exit()
+
+    object_name = sys.argv[1]
+    exptime = sys.argv[2]
+    count = sys.argv[3]
+
+    ExposeG2(object_name, exptime, count)
+
+if __name__ == '__main__':
+    main()

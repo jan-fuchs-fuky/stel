@@ -1,0 +1,56 @@
+- 2021-01-09: webové rozhraní AllSky kamery umožňuje vybrat různé velikosti obrázků
+
+- 2020-11-28 lto.stel: přidání nových 18TB HDD, přesunul se na ně systém v
+  raidu ze starých 2TB HDD, které se odstranily, zbytek kapacity se použil
+  pro navýšení kapacity ZFS
+
+- 2020-11-05 pc-allsky: připojení a zprovoznění nového čidla Fiedler RVT13
+
+- 2020-10-28 pc-allsky: nová verze allsky.service
+
+- 2020-10-28 pc-allsky: nová verze aurora.service
+
+- 2020-10-28 pc-allsky: nová verze allsky_rs232.service
+
+- na tyche došla RAM, tak začal zabíjet oomkiller:
+
+    Task in /lxc/tyche/system.slice/mariadb.service killed as a result of limit of /lxc/tyche
+
+    2020-10-24 10:20:42 9 [Warning] Recovering table: './kipor/realtime'
+    2020-10-24 10:22:57 9 [Warning] mysqld: Disk is full writing
+    '/tmp/STBeiXhJ' (Errcode: 28 "No space left on device"). Waiting for
+    someone to free space... (Expect up to 60 secs delay for server to continue
+    after freeing disk space)
+
+    - nejspíš to způsobila příliš velká tabulka kipor.realtime, která zůstala
+      poškozená, byla třeba jen při ladění agregátu, tak se její plnění (1x za sekundu)
+      zakázalo ve skriptu alhena:/opt/bin/kipor_get.py a zbytečná tabulka se z databáze
+      na tyche smazala, v budoucnu se tato potřeba vyřeší případně lépe
+
+        2020-10-24 10:51:55 961 [ERROR] mysqld: Table './kipor/realtime' is
+        marked as crashed and last (automatic?) repair failed
+
+- v rozvaděči 2m tubus nahrazeno, občas vytuhávající, SDS relé za Papouch Quido
+  ETH 4/4 včetně kompletně nového SW pro komunikaci a úprava klientů na
+  pozorovacích PC
+
+- pc-tubus nová instalace systému Ubuntu 20.04
+
+- pc-allsky nová instalace systému Ubuntu 20.04
+
+- ve všech tří průmyslových PC nahrazen SSD Apacer za SSD Intel
+
+2020-09-04 - pc-allsky
+
+    - pro jistotu reinstalace Debian GNU/Linux 10 (buster)
+
+2020-09-04 - pc-tubus, pc-allsky
+
+    - nová verze BIOSu (pokus o odstranění problémů na pc-allsky)
+
+2020-04-12 - BUGFIX: Nová verze daemona na PC Tubus pro ovládání COMP/FLAT atd.
+
+    Je v něm ošetřena chyba, kdy nastal při komunikaci deadlock, nyní je pro tento
+    případ nastaven timeout 5 sekund, pak se 2 sekundy počká a komunikace s relé se
+    provede znovu. Neměla by tedy nastat situace, že je třeba daemona ručně
+    restartovat.

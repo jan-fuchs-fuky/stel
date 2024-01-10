@@ -1,0 +1,4 @@
+#!/bin/bash
+
+find 2.0 3.0 -name '*.so' -exec rm -v {} \;
+find 2.0 3.0 -name '*.o' -exec rm -v {} \;

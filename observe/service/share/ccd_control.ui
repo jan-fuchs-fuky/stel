@@ -1,0 +1,1680 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>874</width>
+    <height>1432</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <property name="leftMargin">
+     <number>9</number>
+    </property>
+    <property name="topMargin">
+     <number>9</number>
+    </property>
+    <property name="rightMargin">
+     <number>9</number>
+    </property>
+    <property name="bottomMargin">
+     <number>9</number>
+    </property>
+    <property name="spacing">
+     <number>6</number>
+    </property>
+    <item row="3" column="0" rowspan="2" colspan="2">
+     <widget class="QGroupBox" name="groupBox_12">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="title">
+       <string>Telescope</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_13">
+       <item row="8" column="6">
+        <widget class="QLabel" name="telescope_mirror_flap_LB">
+         <property name="text">
+          <string>unknown</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>UTC:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="8">
+        <widget class="QPushButton" name="dome_stop_BT">
+         <property name="text">
+          <string>STOP</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="2">
+        <widget class="QLabel" name="label_34">
+         <property name="text">
+          <string>Dome:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_9">
+         <property name="text">
+          <string>LST:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="5">
+        <widget class="QPushButton" name="dome_calibration_BT">
+         <property name="text">
+          <string>CALIBRATION</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="4">
+        <widget class="QPushButton" name="pushButton_10">
+         <property name="text">
+          <string>OPEN</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="5">
+        <widget class="QPushButton" name="tracking_off_BT">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="text">
+          <string>OFF</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QLabel" name="azimuth_LB">
+         <property name="text">
+          <string>unknown</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="7">
+        <widget class="QLabel" name="label_35">
+         <property name="text">
+          <string>HA:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QLabel" name="label_8">
+         <property name="text">
+          <string>Slit:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="1">
+        <widget class="QLabel" name="airmass_LB">
+         <property name="text">
+          <string>unknown</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="2">
+        <widget class="QLabel" name="label_26">
+         <property name="text">
+          <string>Correction model:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QLabel" name="label_11">
+         <property name="text">
+          <string>Altitude:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="0">
+        <widget class="QLabel" name="label_27">
+         <property name="text">
+          <string>Corrections:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="6">
+        <widget class="QLabel" name="telescope_slit_LB">
+         <property name="text">
+          <string>unknown</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="5">
+        <widget class="QPushButton" name="pushButton_11">
+         <property name="text">
+          <string>CLOSE</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="8">
+        <widget class="QLabel" name="telescope_da_LB">
+         <property name="text">
+          <string>unknown</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="4">
+        <widget class="QPushButton" name="dome_auto_BT">
+         <property name="text">
+          <string>AUTO</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="7">
+        <widget class="QLabel" name="telescope_dome_calibration_LB">
+         <property name="text">
+          <string>unknown</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0">
+        <widget class="QLabel" name="label_5">
+         <property name="text">
+          <string>Airmass:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="6">
+        <widget class="QLabel" name="telescope_telescope_LB">
+         <property name="text">
+          <string>unknown</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="5">
+        <widget class="QPushButton" name="telescope_off_BT">
+         <property name="text">
+          <string>OFF</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QLabel" name="label_47">
+         <property name="text">
+          <string>Oil:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_33">
+         <property name="text">
+          <string>HA:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="5">
+        <widget class="QPushButton" name="mirror_flap_close_BT">
+         <property name="text">
+          <string>CLOSE</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="4">
+        <widget class="QPushButton" name="pushButton">
+         <property name="text">
+          <string>ON</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="8">
+        <widget class="QPushButton" name="telescope_stop_BT">
+         <property name="text">
+          <string>STOP</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="5">
+        <widget class="QComboBox" name="telescope_correction_model_CB">
+         <item>
+          <property name="text">
+           <string>0</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="5" column="6">
+        <widget class="QLabel" name="telescope_dome_LB">
+         <property name="text">
+          <string>unknown</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="4">
+        <widget class="QPushButton" name="telescope_on_BT">
+         <property name="text">
+          <string>ON</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="5">
+        <widget class="QPushButton" name="pushButton_2">
+         <property name="text">
+          <string>OFF</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="2">
+        <widget class="QLabel" name="label_7">
+         <property name="text">
+          <string>Telescope:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="5">
+        <widget class="QPushButton" name="slit_close_BT">
+         <property name="text">
+          <string>CLOSE</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="1">
+        <widget class="QLabel" name="telescope_corrections_LB">
+         <property name="text">
+          <string>unknown</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="7">
+        <widget class="QPushButton" name="telescope_park_BT">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>PARK</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="QLabel" name="altitude_LB">
+         <property name="text">
+          <string>unknown</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="8">
+        <widget class="QLabel" name="telescope_ha_LB">
+         <property name="text">
+          <string>unknown</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="4">
+        <widget class="QPushButton" name="tracking_on_BT">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="text">
+          <string>ON</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="7">
+        <widget class="QLabel" name="label_48">
+         <property name="text">
+          <string>DA:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="2">
+        <widget class="QLabel" name="label_28">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="text">
+          <string>Tracking:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="4">
+        <widget class="QPushButton" name="mirror_flap_open_BT">
+         <property name="text">
+          <string>OPEN</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="6">
+        <widget class="QLabel" name="telescope_oil_LB">
+         <property name="text">
+          <string>unknown</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="4">
+        <widget class="QPushButton" name="slit_open_BT">
+         <property name="text">
+          <string>OPEN</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="6">
+        <widget class="QLabel" name="telescope_tube_flap_LB">
+         <property name="text">
+          <string>unknown</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLabel" name="utc_LB">
+         <property name="text">
+          <string>unknown</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="label_10">
+         <property name="text">
+          <string>Azimuth:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="6">
+        <widget class="QLabel" name="telescope_correction_model_LB">
+         <property name="text">
+          <string>unknown</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="2">
+        <widget class="QLabel" name="label_36">
+         <property name="text">
+          <string>Mirror:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLabel" name="lst_LB">
+         <property name="text">
+          <string>unknown</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="2">
+        <widget class="QLabel" name="label_4">
+         <property name="text">
+          <string>Tube:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLabel" name="ha_LB">
+         <property name="text">
+          <string>unknown</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="7">
+        <widget class="QLabel" name="label_49">
+         <property name="text">
+          <string>HA calibration:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="7">
+        <widget class="QLabel" name="label_50">
+         <property name="text">
+          <string>DA calibration:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="8">
+        <widget class="QLabel" name="telescope_ha_calibration_LB">
+         <property name="text">
+          <string>unknown</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="8">
+        <widget class="QLabel" name="telescope_da_calibration_LB">
+         <property name="text">
+          <string>unknown</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="0">
+        <widget class="QLabel" name="label_51">
+         <property name="text">
+          <string>Dome:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="1">
+        <widget class="QLabel" name="telescope_dome_position_LB">
+         <property name="text">
+          <string>unknown</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="9" column="0">
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="6" column="0" rowspan="3">
+     <widget class="QGroupBox" name="groupBox">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="title">
+       <string>Star coordinates</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_5">
+       <item row="5" column="1" colspan="2">
+        <widget class="QLineEdit" name="dec_LE"/>
+       </item>
+       <item row="6" column="1" colspan="2">
+        <widget class="QLabel" name="coordinates_position_LB">
+         <property name="text">
+          <string>unknown</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QPushButton" name="load_target_from_stel_BT">
+         <property name="text">
+          <string>Load from STEL</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QPushButton" name="pushButton_9">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Load from SIMBAD</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_13">
+         <property name="text">
+          <string>DEC:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="2">
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="4" column="1" colspan="2">
+        <widget class="QLabel" name="coordinates_dec_LB">
+         <property name="text">
+          <string>unknown</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="1" colspan="2">
+        <widget class="QComboBox" name="telescope_position_CB">
+         <item>
+          <property name="text">
+           <string>east</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>west</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="8" column="2">
+        <widget class="QPushButton" name="go_ra_dec_BT">
+         <property name="text">
+          <string>GO</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1" colspan="2">
+        <widget class="QLabel" name="coordinates_ra_LB">
+         <property name="text">
+          <string>unknown</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QLabel" name="label_12">
+         <property name="text">
+          <string>Position:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QPushButton" name="get_prepared_coordinates_BT">
+         <property name="text">
+          <string>Get prepared coordinates</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>RA:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1" colspan="2">
+        <widget class="QLineEdit" name="ra_LE"/>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_46">
+         <property name="text">
+          <string>Object:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1" colspan="2">
+        <widget class="QLineEdit" name="star_name_LE"/>
+       </item>
+       <item row="8" column="1">
+        <widget class="QPushButton" name="send_coordinates_BT">
+         <property name="text">
+          <string>Send coordinates</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="8" column="1">
+     <widget class="QGroupBox" name="groupBox_2">
+      <property name="title">
+       <string>Observers</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="0" column="0">
+        <widget class="QLineEdit" name="observers_LE"/>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="6" column="1">
+     <widget class="QGroupBox" name="groupBox_3">
+      <property name="title">
+       <string>Moves</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_8">
+       <item row="6" column="0">
+        <spacer name="verticalSpacer_5">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLabel" name="telescope_ra_correction_LB">
+         <property name="text">
+          <string>unknown</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_55">
+         <property name="text">
+          <string>DEC correction:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="2">
+        <widget class="QPushButton" name="telescope_set_corrections_BT">
+         <property name="text">
+          <string>SET RA DEC</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QDoubleSpinBox" name="telescope_dome_set_absolute_DSB">
+         <property name="maximum">
+          <double>359.990000000000009</double>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLabel" name="telescope_dec_correction_LB">
+         <property name="text">
+          <string>unknown</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QDoubleSpinBox" name="telescope_dec_correction_DSB">
+         <property name="decimals">
+          <number>1</number>
+         </property>
+         <property name="minimum">
+          <double>-300.000000000000000</double>
+         </property>
+         <property name="maximum">
+          <double>300.000000000000000</double>
+         </property>
+         <property name="singleStep">
+          <double>0.100000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QDoubleSpinBox" name="telescope_ra_correction_DSB">
+         <property name="decimals">
+          <number>1</number>
+         </property>
+         <property name="minimum">
+          <double>-300.000000000000000</double>
+         </property>
+         <property name="maximum">
+          <double>300.000000000000000</double>
+         </property>
+         <property name="singleStep">
+          <double>0.100000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_54">
+         <property name="text">
+          <string>RA correction:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="2">
+        <widget class="QPushButton" name="telescope_dome_set_relative_BT">
+         <property name="text">
+          <string>GO REL</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_53">
+         <property name="text">
+          <string>Dome absolute position:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QDoubleSpinBox" name="telescope_dome_set_relative_DSB">
+         <property name="minimum">
+          <double>-179.990000000000009</double>
+         </property>
+         <property name="maximum">
+          <double>180.000000000000000</double>
+         </property>
+         <property name="singleStep">
+          <double>1.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="label_52">
+         <property name="text">
+          <string>Dome relative posistion:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="2">
+        <widget class="QPushButton" name="telescope_dome_set_absolute_BT">
+         <property name="text">
+          <string>GO ABS</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QWidget" name="limits_matplotlib_widget" native="true">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <item>
+        <layout class="QVBoxLayout" name="limits_matplotlib_layout"/>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QWidget" name="star_matplotlib_widget" native="true">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <layout class="QVBoxLayout" name="star_matplotlib_layout"/>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="1" column="0" rowspan="2">
+     <widget class="QTabWidget" name="ccd_tab">
+      <property name="tabPosition">
+       <enum>QTabWidget::South</enum>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>CCD700</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_6">
+        <item row="14" column="0" colspan="3">
+         <widget class="QLabel" name="ccd700_status_LB">
+          <property name="text">
+           <string>unknown</string>
+          </property>
+         </widget>
+        </item>
+        <item row="15" column="0">
+         <widget class="QLabel" name="label_38">
+          <property name="text">
+           <string>Data path:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="25" column="2">
+         <widget class="QPushButton" name="ccd700_spectrograph_set_BT">
+          <property name="text">
+           <string>Set</string>
+          </property>
+         </widget>
+        </item>
+        <item row="7" column="0" colspan="3">
+         <widget class="Line" name="line_4">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="9" column="1" colspan="2">
+         <widget class="QLineEdit" name="ccd700_target_LE"/>
+        </item>
+        <item row="17" column="1">
+         <widget class="QComboBox" name="ccd700_gain_CB">
+          <item>
+           <property name="text">
+            <string>high</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>medium</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>low</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="16" column="0">
+         <widget class="QLabel" name="label_37">
+          <property name="text">
+           <string>Actual CCD temp:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QLineEdit" name="ccd700_exposure_time_LE"/>
+        </item>
+        <item row="5" column="1">
+         <widget class="QLineEdit" name="ccd700_count_of_pulses_LE"/>
+        </item>
+        <item row="10" column="1" colspan="2">
+         <widget class="QLabel" name="ccd700_file_fits_LB">
+          <property name="text">
+           <string>unknown</string>
+          </property>
+         </widget>
+        </item>
+        <item row="22" column="2">
+         <widget class="QLabel" name="ccd700_grating_angle_LB">
+          <property name="text">
+           <string>unknown</string>
+          </property>
+         </widget>
+        </item>
+        <item row="13" column="0" colspan="3">
+         <widget class="QProgressBar" name="ccd700_PB">
+          <property name="value">
+           <number>100</number>
+          </property>
+         </widget>
+        </item>
+        <item row="8" column="0">
+         <widget class="QLabel" name="label_39">
+          <property name="text">
+           <string>Object:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="23" column="2">
+         <widget class="QLabel" name="ccd700_grating_angle_state_LB">
+          <property name="text">
+           <string>unknown</string>
+          </property>
+         </widget>
+        </item>
+        <item row="22" column="0">
+         <widget class="QLabel" name="label_22">
+          <property name="text">
+           <string>Grating angle:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="11" column="0">
+         <widget class="QPushButton" name="ccd700_start_BT">
+          <property name="text">
+           <string>Start</string>
+          </property>
+         </widget>
+        </item>
+        <item row="10" column="0">
+         <widget class="QLabel" name="label_41">
+          <property name="text">
+           <string>File FITs:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="27" column="1">
+         <spacer name="verticalSpacer_3">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="20" column="1">
+         <widget class="QComboBox" name="ccd700_collimator_CB">
+          <item>
+           <property name="text">
+            <string>STOP</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>OPEN</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>OPEN LEFT</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>OPEN RIGHT</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>CLOSE</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="11" column="1">
+         <widget class="QPushButton" name="ccd700_readout_BT">
+          <property name="text">
+           <string>Readout</string>
+          </property>
+         </widget>
+        </item>
+        <item row="22" column="1">
+         <widget class="QLineEdit" name="ccd700_grating_angle_LE"/>
+        </item>
+        <item row="16" column="1" colspan="2">
+         <widget class="QLabel" name="ccd700_actual_temp_LB">
+          <property name="text">
+           <string>unknown</string>
+          </property>
+         </widget>
+        </item>
+        <item row="9" column="0">
+         <widget class="QLabel" name="label_42">
+          <property name="text">
+           <string>Target:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="25" column="1">
+         <widget class="QLabel" name="ccd700_spectrograph_set_LB">
+          <property name="text">
+           <string>unknown</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="2">
+         <widget class="QCheckBox" name="ccd700_exposure_time_CHB">
+          <property name="text">
+           <string>OFF</string>
+          </property>
+         </widget>
+        </item>
+        <item row="20" column="2">
+         <widget class="QLabel" name="ccd700_collimator_LB">
+          <property name="text">
+           <string>unknown</string>
+          </property>
+         </widget>
+        </item>
+        <item row="25" column="0">
+         <widget class="QPushButton" name="ccd700_load_setup_BT">
+          <property name="text">
+           <string>Load setup</string>
+          </property>
+         </widget>
+        </item>
+        <item row="21" column="2">
+         <widget class="QLabel" name="ccd700_spectral_filter_LB">
+          <property name="text">
+           <string>unknown</string>
+          </property>
+         </widget>
+        </item>
+        <item row="12" column="0" colspan="3">
+         <widget class="QProgressBar" name="ccd700_exposure_meter_PB">
+          <property name="value">
+           <number>100</number>
+          </property>
+         </widget>
+        </item>
+        <item row="24" column="1">
+         <widget class="QLabel" name="ccd700_em_count_of_pulses_LB">
+          <property name="text">
+           <string>unknown</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1" colspan="2">
+         <widget class="QSpinBox" name="ccd700_count_repeat_SB">
+          <property name="minimum">
+           <number>1</number>
+          </property>
+          <property name="maximum">
+           <number>1000</number>
+          </property>
+         </widget>
+        </item>
+        <item row="21" column="1">
+         <widget class="QComboBox" name="ccd700_spectral_filter_CB">
+          <item>
+           <property name="text">
+            <string>1</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>2</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>3</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>4</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>5</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_30">
+          <property name="text">
+           <string>Count repeat:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="18" column="0">
+         <widget class="QLabel" name="label_24">
+          <property name="text">
+           <string>Readout speed:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="0">
+         <widget class="QLabel" name="label_23">
+          <property name="text">
+           <string>Count of pulses:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0" colspan="3">
+         <widget class="QLabel" name="ccd700_title_LB">
+          <property name="text">
+           <string>CCD700</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="8" column="1" colspan="2">
+         <widget class="QComboBox" name="ccd700_object_CB">
+          <item>
+           <property name="text">
+            <string>flat</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>comp</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>zero</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>dark</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>target</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="2" column="0" colspan="3">
+         <widget class="Line" name="line_3">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="18" column="1">
+         <widget class="QComboBox" name="ccd700_readout_speed_CB">
+          <item>
+           <property name="text">
+            <string>50kHz</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>100kHz</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>200kHz</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>500kHz</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>1MHz</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>2MHz</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>4MHz</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="21" column="0">
+         <widget class="QLabel" name="label_18">
+          <property name="text">
+           <string>Spectral filter:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="label_32">
+          <property name="text">
+           <string>Exposure time:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="20" column="0">
+         <widget class="QLabel" name="label_29">
+          <property name="text">
+           <string>Collimator:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="15" column="1" colspan="2">
+         <widget class="QComboBox" name="ccd700_data_path_CB">
+          <item>
+           <property name="text">
+            <string>/data/CCD700.RAW/INCOMING</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>/data/CCD700.RAW/INCOMING/TECH</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="24" column="0">
+         <widget class="QLabel" name="label_45">
+          <property name="text">
+           <string>EM count of pulses:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="17" column="0">
+         <widget class="QLabel" name="label_31">
+          <property name="text">
+           <string>Gain:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="2">
+         <widget class="QCheckBox" name="ccd700_count_of_pulses_CHB">
+          <property name="text">
+           <string>OFF</string>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="1">
+         <widget class="QPushButton" name="ccd700_update_exposure_length_BT">
+          <property name="text">
+           <string>Update</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title">
+        <string>OES</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="14" column="1" colspan="3">
+         <widget class="QLabel" name="oes_status_LB">
+          <property name="text">
+           <string>unknown</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2" colspan="2">
+         <widget class="QSpinBox" name="oes_count_repeat_SB">
+          <property name="minimum">
+           <number>1</number>
+          </property>
+          <property name="maximum">
+           <number>1000</number>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1" colspan="3">
+         <widget class="Line" name="line">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="13" column="1" colspan="3">
+         <widget class="QProgressBar" name="oes_PB">
+          <property name="value">
+           <number>100</number>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1" colspan="3">
+         <widget class="QLabel" name="oes_title_LB">
+          <property name="text">
+           <string>OES</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="19" column="2">
+         <widget class="QComboBox" name="oes_spectral_filter_CB">
+          <item>
+           <property name="text">
+            <string>0 - none</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>2 - blue</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QLabel" name="label_17">
+          <property name="text">
+           <string>Count of pulses:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="20" column="1">
+         <widget class="QLabel" name="label_43">
+          <property name="text">
+           <string>Slit height:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="22" column="1">
+         <spacer name="verticalSpacer_4">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="11" column="1">
+         <widget class="QPushButton" name="oes_start_BT">
+          <property name="text">
+           <string>Start</string>
+          </property>
+         </widget>
+        </item>
+        <item row="16" column="1">
+         <widget class="QLabel" name="label_20">
+          <property name="text">
+           <string>Actual CCD temp:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="20" column="2">
+         <widget class="QComboBox" name="oes_slit_height_CB">
+          <item>
+           <property name="text">
+            <string>1.07 mm</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>0.22 mm</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>0.5 mm</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>2.02 mm</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>3.1 mm</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="7" column="1" colspan="3">
+         <widget class="Line" name="line_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="10" column="1">
+         <widget class="QLabel" name="label_16">
+          <property name="text">
+           <string>File FITs:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLabel" name="label_3">
+          <property name="text">
+           <string>Count repeat:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QLabel" name="label_6">
+          <property name="text">
+           <string>Exposure time:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="11" column="2">
+         <widget class="QPushButton" name="oes_readout_BT">
+          <property name="text">
+           <string>Readout</string>
+          </property>
+         </widget>
+        </item>
+        <item row="12" column="1" colspan="3">
+         <widget class="QProgressBar" name="oes_exposure_meter_PB">
+          <property name="value">
+           <number>100</number>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="2">
+         <widget class="QLineEdit" name="oes_count_of_pulses_LE"/>
+        </item>
+        <item row="18" column="2">
+         <widget class="QComboBox" name="oes_collimator_CB">
+          <item>
+           <property name="text">
+            <string>STOP</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>OPEN</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>OPEN LEFT</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>OPEN RIGHT</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>CLOSE</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="3" column="3">
+         <widget class="QCheckBox" name="oes_exposure_time_CHB">
+          <property name="text">
+           <string>OFF</string>
+          </property>
+         </widget>
+        </item>
+        <item row="18" column="1">
+         <widget class="QLabel" name="label_25">
+          <property name="text">
+           <string>Collimator:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="16" column="2" colspan="2">
+         <widget class="QLabel" name="oes_actual_temp_LB">
+          <property name="text">
+           <string>unknown</string>
+          </property>
+         </widget>
+        </item>
+        <item row="17" column="1">
+         <widget class="QLabel" name="label_21">
+          <property name="text">
+           <string>Readout speed:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="21" column="1">
+         <widget class="QLabel" name="label_44">
+          <property name="text">
+           <string>EM count of pulses:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="8" column="2" colspan="2">
+         <widget class="QComboBox" name="oes_object_CB">
+          <item>
+           <property name="text">
+            <string>flat</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>comp</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>zero</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>dark</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>target</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="9" column="1">
+         <widget class="QLabel" name="label_15">
+          <property name="text">
+           <string>Target:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="21" column="2">
+         <widget class="QLabel" name="oes_em_count_of_pulses_LB">
+          <property name="text">
+           <string>unknown</string>
+          </property>
+         </widget>
+        </item>
+        <item row="9" column="2" colspan="2">
+         <widget class="QLineEdit" name="oes_target_LE"/>
+        </item>
+        <item row="10" column="2" colspan="2">
+         <widget class="QLabel" name="oes_file_fits_LB">
+          <property name="text">
+           <string>unknown</string>
+          </property>
+         </widget>
+        </item>
+        <item row="8" column="1">
+         <widget class="QLabel" name="label_14">
+          <property name="text">
+           <string>Object:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="18" column="3">
+         <widget class="QLabel" name="oes_collimator_LB">
+          <property name="text">
+           <string>unknown</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="2">
+         <widget class="QLineEdit" name="oes_exposure_time_LE"/>
+        </item>
+        <item row="19" column="1">
+         <widget class="QLabel" name="label_40">
+          <property name="text">
+           <string>Spectral filter:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="15" column="1">
+         <widget class="QLabel" name="label_19">
+          <property name="text">
+           <string>Data path:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="15" column="2" colspan="2">
+         <widget class="QComboBox" name="oes_data_path_CB">
+          <item>
+           <property name="text">
+            <string>/data/OES/INCOMING</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>/data/OES/INCOMING/TECH</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="4" column="3">
+         <widget class="QCheckBox" name="oes_count_of_pulses_CHB">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+          <property name="text">
+           <string>OFF</string>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="17" column="2" colspan="2">
+         <widget class="QComboBox" name="oes_readout_speed_CB">
+          <item>
+           <property name="text">
+            <string>100kHz</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>1MHz</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="5" column="2">
+         <widget class="QPushButton" name="oes_update_exposure_length_BT">
+          <property name="text">
+           <string>Update</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_3">
+       <attribute name="title">
+        <string>Log</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_7">
+        <item row="0" column="0">
+         <widget class="QTextEdit" name="log_TE">
+          <property name="textInteractionFlags">
+           <set>Qt::NoTextInteraction</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>874</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

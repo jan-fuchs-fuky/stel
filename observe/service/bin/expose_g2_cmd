@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [ $# -ne 14 ]; then
+    echo "Usage: $0 OBJECT RA DEC TLE_POSITION TRGV TRHD FOCUS_POSITION CAMERA_POSITION EXPTIME EXPCOUNT FILTER BINNING_X BINNING_Y CCD_TEMP"
+    exit
+fi
+
+export LD_LIBRARY_PATH=/home/tcsuser/moravian_instruments/lib
+
+/home/tcsuser/moravian_instruments/bin/expose_g2 $*

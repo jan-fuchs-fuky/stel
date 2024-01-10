@@ -1,0 +1,34 @@
+OBJECT   ; Target of observation                              ; str
+IMAGETYP ; Type of observation, eg. FLAT                      ; str
+OBSERVER ; Observers                                          ; str
+FILENAME ; BIAS filename                                      ; str
+RA       ;                                                    ; str
+DEC      ;                                                    ; str
+ST       ; Local sidereal time at start of observation        ; str
+AZIMUTH  ; Mean azimuth of observation (degrees)              ; float
+H        ; Mean horizon-distance of observation (degrees)     ; float
+TELFOCUS ; Telescope focus (milimeters)                       ; float
+DOMEAZ   ; Mean dome azimuth during observation               ; float
+AIRPRESS ; Atmospheric preasure in (hPa)                      ; float
+AIRHUMEX ; Air humidity outside the dome                      ; float
+AIRHUMIN ; Air humidity inside the dome                       ; float
+OUTTEMP  ; Temperature outside of the dome                    ; float
+DOMETEMP ; Temperature inside the dome                        ; float
+SPECTEMP ; Temperature in spectrograph room                   ; float
+UT       ; UTC of start of observation                        ; str
+DATE     ; Date FITS file was generated                       ; str
+DATE-OBS ; UTC date start of observation                      ; str
+TM_START ;                                                    ; int
+TM_STOP  ;                                                    ; int
+EQUINOX  ; Equinox of RA and DEC                              ; double
+EPOCH    ; Same as EQUINOX - for back compat.                 ; double
+CCDTEMP  ; Detector temperature                               ; int
+EXPTIME  ; Length of observation excluding pauses             ; int
+DARKTIME ; Length of observation including pauses             ; int
+SLITWID  ; Slit width in mm                                   ; float
+SLITHEIG ; Slit height in mm                                  ; float
+SPECTEMP ; Temperature in spectrograph room                   ; float
+SYSVER   ;                                                    ; str
+READSPD  ;                                                    ; str
+CAMFOCUS ; Camera focus position                              ; float
+SPECTEMP ; Temperature in OES room                            ; float

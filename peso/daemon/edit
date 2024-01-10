@@ -1,0 +1,19 @@
+gvim --noplugins -p \
+Makefile \
+ccd_sauron.c \
+ccd_sauron.h \
+daemon_sauron.c \
+daemon_sauron.h \
+socket.c \
+socket.h \
+th_ccd.c \
+th_ccd.h \
+th_connect.c \
+th_connect.h \
+th_queue.c \
+th_queue.h \
+thread.h \
+th_spectrograph.c \
+th_spectrograph.h \
+th_telescope.c \
+th_telescope.h

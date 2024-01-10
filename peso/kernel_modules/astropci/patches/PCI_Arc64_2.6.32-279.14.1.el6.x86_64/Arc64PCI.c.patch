@@ -1,0 +1,68 @@
+--- Arc64PCI.c.orig	2012-12-14 20:12:45.000000000 +0100
++++ Arc64PCI.c	2013-02-27 10:18:37.957487023 +0100
+@@ -25,11 +25,13 @@
+ #include <linux/dma-mapping.h>
+ #include <linux/init.h>
+ #include <linux/interrupt.h>
+-#include <linux/smp_lock.h>
++//#include <linux/smp_lock.h>
+ #include <linux/io.h>
+ #include <linux/jiffies.h>
+ #include <linux/module.h>
+ #include <linux/pci.h>
++#include <linux/fs.h>
++#include <linux/sched.h>
+ 
+ #include "Arc64PCI.h"
+ #include "Arc64Ioctl.h"
+@@ -40,7 +42,9 @@
+ |       Global variables                                                       |
+ +------------------------------------------------------------------------------+
+ */
+-static spinlock_t		g_tArc64Lock		= SPIN_LOCK_UNLOCKED;
++//static spinlock_t		g_tArc64Lock		= SPIN_LOCK_UNLOCKED;
++static DEFINE_SPINLOCK(g_tArc64Lock);
++static DEFINE_MUTEX(arc_pci_mutex);
+ static struct class*	g_pArc64Class		= NULL;
+ static unsigned long	g_ulNextStartAddr	= 0;
+ static int				g_dArc64Major		= 0;
+@@ -583,7 +587,8 @@
+ 
+ 		/*  Initialize the semaphore
+ 		  +----------------------------------------------------------+ */
+-		init_MUTEX( &pDevExt->sem );
++		//init_MUTEX( &pDevExt->sem );
++                sema_init( &pDevExt->sem, 1 );
+ 
+ 		/*  Increase the driver usage count. This is for resetting
+ 		    the image buffer "next available" address.
+@@ -728,7 +733,8 @@
+ 	{
+ 		dCtrlCode = EXCMD( cmd );
+ 
+-		lock_kernel();
++		//lock_kernel();
++                mutex_lock(&arc_pci_mutex);
+ 
+         switch ( dCtrlCode )
+ 		{
+@@ -1249,7 +1255,8 @@
+ 
+ 		}	// end switch
+ 
+-        unlock_kernel();
++        //unlock_kernel();
++        mutex_unlock(&arc_pci_mutex);
+ 
+ 		up( &pDevExt->sem );
+ 
+@@ -1998,7 +2005,8 @@
+ 		{
+ 			/* Sleep delay
+ 			  +--------------------------------------------+ */
+-			current->state = TASK_UNINTERRUPTIBLE;
++			//current->state = TASK_UNINTERRUPTIBLE;
++                        set_current_state(TASK_UNINTERRUPTIBLE);
+ 
+ 			schedule_timeout( u32SleepDelay );
+ 		}

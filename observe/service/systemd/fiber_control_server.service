@@ -1,0 +1,22 @@
+[Unit]
+Description=fiber_control_server
+
+[Service]
+User=tcsuser
+StandardOutput=null
+
+# Note: setting PYTHONUNBUFFERED is necessary to see the output of this service in the journal
+# See https://docs.python.org/2/using/cmdline.html#envvar-PYTHONUNBUFFERED
+Environment=PYTHONUNBUFFERED=true
+
+# Adjust this line to the correct path to test.py
+ExecStart=/usr/bin/python3 /opt/fiber_control_server/bin/fiber_control_server.py
+
+# Note that we use Type=notify here since example.py will send "READY=1"
+# when it's finished starting up
+Type=notify
+NotifyAccess=all
+
+WatchdogSec=300
+RestartSec=5
+Restart=always

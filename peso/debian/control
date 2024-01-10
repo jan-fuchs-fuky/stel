@@ -1,0 +1,31 @@
+Source: peso
+Section: misc
+Priority: extra
+Maintainer: Jan Fuchs <fuky@sunstel.asu.cas.cz>
+Build-Depends: debhelper (>= 7)
+Standards-Version: 3.7.3
+Homepage: http://www.fuky.org/peso
+
+Package: peso-server
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: PESO server
+ Server for control CCD
+
+Package: libpeso-mod-ccd-frodo
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: PESO server module for Frodo CCD
+ Module for control Frodo CCD
+
+Package: libpeso-mod-ccd-sauron
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: PESO server module for Sauron CCD
+ Module for control Sauron CCD
+
+Package: peso-client
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: PESO client
+ Client for connect PESO server

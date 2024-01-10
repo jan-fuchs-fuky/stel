@@ -1,0 +1,21 @@
+*** CCD ***
+
+- nechat dokoncit
+- zkratit expozicni cas
+- prodlouzit expozicni cas
+
+- 1x 1s flat
+- 1x 1s comp
+- 1x 0s zero
+- 1x 1s dark
+- 1x 1s target
+
+- nechat dokoncit
+- u druhe expozice readout
+- u druhe expozice abort
+
+- 3x 10s flat
+- 3x 10s comp
+- 3x 0s zero
+- 3x 10s dark
+- 3x 10s target

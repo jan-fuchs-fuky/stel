@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ssh root@pc-tubus.stel /root/bin/g2_reattach_cmd

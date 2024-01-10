@@ -1,0 +1,245 @@
+exposed:
+
+    - vice informaci v hlavicce
+
+        AUTOGUID = YES/NO
+
+    - kontrolovat pretoceni zrcatka OES/Coude
+
+observe-client:
+
+    - nastavovani komentaru
+
+    - prodlouzeni expozice
+
+    - rizeni doby expozice pomoci expozimetru
+
+*** ERROR: 2021-11-06 ***
+
+pc-allsky$ uptime
+
+    17:34:04 up 136 days,  5:37,  1 user,  load average: 0,00, 0,00, 0,00
+
+pc-allsky:$ free -m
+
+                  total        used        free      shared  buff/cache   available
+    Mem:           1833        1586          99           0         147         100
+    Swap:          2047         101        1946
+
+root@pc-allsky:/home/tcsuser# systemctl status allsky.service
+
+    ● allsky.service - allsky
+         Loaded: loaded (/etc/systemd/system/allsky.service; enabled; vendor preset: enabled)
+         Active: active (running) since Sat 2021-11-06 17:16:27 CET; 24h ago
+       Main PID: 1550264 (python3)
+          Tasks: 49 (limit: 2134)
+         Memory: 1.3G
+         CGroup: /system.slice/allsky.service
+                 ├─1550264 /usr/bin/python3 /opt/allsky/bin/allsky.py
+                 └─1550274 /usr/bin/python3 /opt/allsky/bin/allsky.py
+    
+    lis 06 17:16:26 pc-allsky systemd[1]: Starting allsky...
+    lis 06 17:16:27 pc-allsky systemd[1]: Started allsky.
+
+[So lis  6 17:02:49 2021] python3 invoked oom-killer: gfp_mask=0x100cca(GFP_HIGHUSER_MOVABLE), order=0, oom_score_adj=0
+[So lis  6 17:02:49 2021] CPU: 0 PID: 1550074 Comm: python3 Not tainted 5.4.0-52-generic #57-Ubuntu
+[So lis  6 17:02:49 2021] Hardware name: CINCOZE DA-1100/DA-1100, BIOS 5.12 01/03/2020
+[So lis  6 17:02:49 2021] Call Trace:
+[So lis  6 17:02:49 2021]  dump_stack+0x6d/0x9a
+[So lis  6 17:02:49 2021]  dump_header+0x4f/0x1eb
+[So lis  6 17:02:49 2021]  oom_kill_process.cold+0xb/0x10
+[So lis  6 17:02:49 2021]  out_of_memory.part.0+0x1df/0x3d0
+[So lis  6 17:02:49 2021]  out_of_memory+0x6d/0xd0
+[So lis  6 17:02:49 2021]  __alloc_pages_slowpath+0xd5e/0xe50
+[So lis  6 17:02:49 2021]  ? blk_flush_plug_list+0xe3/0x110
+[So lis  6 17:02:49 2021]  __alloc_pages_nodemask+0x2d0/0x320
+[So lis  6 17:02:49 2021]  alloc_pages_current+0x87/0xe0
+[So lis  6 17:02:49 2021]  __page_cache_alloc+0x72/0x90
+[So lis  6 17:02:49 2021]  pagecache_get_page+0xbf/0x300
+[So lis  6 17:02:49 2021]  filemap_fault+0x6b2/0xa50
+[So lis  6 17:02:49 2021]  ? unlock_page_memcg+0x12/0x20
+[So lis  6 17:02:49 2021]  ? page_add_file_rmap+0xff/0x1a0
+[So lis  6 17:02:49 2021]  ? filemap_map_pages+0x24c/0x380
+[So lis  6 17:02:49 2021]  ext4_filemap_fault+0x32/0x46
+[So lis  6 17:02:49 2021]  __do_fault+0x3c/0x130
+[So lis  6 17:02:49 2021]  do_fault+0x24b/0x640
+[So lis  6 17:02:49 2021]  __handle_mm_fault+0x4c5/0x7a0
+[So lis  6 17:02:49 2021]  handle_mm_fault+0xca/0x200
+[So lis  6 17:02:49 2021]  do_user_addr_fault+0x1f9/0x450
+[So lis  6 17:02:49 2021]  __do_page_fault+0x58/0x90
+[So lis  6 17:02:49 2021]  do_page_fault+0x2c/0xe0
+[So lis  6 17:02:49 2021]  page_fault+0x34/0x40
+[So lis  6 17:02:49 2021] RIP: 0033:0x7ffa65e41ffc
+[So lis  6 17:02:49 2021] Code: Bad RIP value.
+[So lis  6 17:02:49 2021] RSP: 002b:00007ffe089181a8 EFLAGS: 00010293
+[So lis  6 17:02:49 2021] RAX: 0000000000000004 RBX: 00007ffa65c321e0 RCX: 0000000000000010
+[So lis  6 17:02:49 2021] RDX: 00000000ffff0001 RSI: 00007ffa643598b0 RDI: 00007ffa65c339c0
+[So lis  6 17:02:49 2021] RBP: 0000000000000009 R08: 0000000000000000 R09: 0000000000000008
+[So lis  6 17:02:49 2021] R10: fffffffffffff9d8 R11: 0000000000000009 R12: 00007ffa65e0f000
+[So lis  6 17:02:49 2021] R13: 0000000002a241c8 R14: 00007ffa65c24510 R15: 0000000000000009
+[So lis  6 17:02:49 2021] Mem-Info:
+[So lis  6 17:02:49 2021] active_anon:309097 inactive_anon:106726 isolated_anon:0
+                           active_file:36 inactive_file:28 isolated_file:0
+                           unevictable:37 dirty:0 writeback:0 unstable:0
+                           slab_reclaimable:10227 slab_unreclaimable:17852
+                           mapped:46 shmem:57 pagetables:3346 bounce:0
+                           free:12948 free_pcp:0 free_cma:0
+[So lis  6 17:02:49 2021] Node 0 active_anon:1236388kB inactive_anon:426904kB active_file:144kB inactive_file:112kB unevictable:148kB isolated(anon):0kB isolated(file):0kB mapped:184kB dirty:0kB writeback:0kB shmem:228kB shmem_thp: 0kB shmem_pmdmapped: 0kB anon_thp: 6144kB writeback_tmp:0kB unstable:0kB all_unreclaimable? yes
+[So lis  6 17:02:49 2021] Node 0 DMA free:7424kB min:392kB low:488kB high:584kB active_anon:6708kB inactive_anon:1588kB active_file:0kB inactive_file:0kB unevictable:0kB writepending:0kB present:15988kB managed:15884kB mlocked:0kB kernel_stack:0kB pagetables:20kB bounce:0kB free_pcp:0kB local_pcp:0kB free_cma:0kB
+[So lis  6 17:02:49 2021] lowmem_reserve[]: 0 1763 1763 1763 1763
+[So lis  6 17:02:49 2021] Node 0 DMA32 free:44368kB min:44660kB low:55824kB high:66988kB active_anon:1229936kB inactive_anon:425068kB active_file:88kB inactive_file:532kB unevictable:148kB writepending:0kB present:1923720kB managed:1861820kB mlocked:16kB kernel_stack:4320kB pagetables:13364kB bounce:0kB free_pcp:0kB local_pcp:0kB free_cma:0kB
+[So lis  6 17:02:49 2021] lowmem_reserve[]: 0 0 0 0 0
+[So lis  6 17:02:49 2021] Node 0 DMA: 10*4kB (UME) 3*8kB (UME) 6*16kB (UE) 5*32kB (UME) 5*64kB (UME) 5*128kB (UE) 4*256kB (UME) 0*512kB 5*1024kB (UME) 0*2048kB 0*4096kB = 7424kB
+[So lis  6 17:02:49 2021] Node 0 DMA32: 753*4kB (UME) 514*8kB (UME) 341*16kB (UME) 266*32kB (UME) 117*64kB (UME) 38*128kB (UME) 14*256kB (UE) 4*512kB (U) 6*1024kB (M) 0*2048kB 0*4096kB = 45220kB
+[So lis  6 17:02:49 2021] Node 0 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=1048576kB
+[So lis  6 17:02:49 2021] Node 0 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=2048kB
+[So lis  6 17:02:49 2021] 10617 total pagecache pages
+[So lis  6 17:02:49 2021] 10461 pages in swap cache
+[So lis  6 17:02:49 2021] Swap cache stats: add 41750108, delete 41738515, find 15851392/16156506
+[So lis  6 17:02:49 2021] Free swap  = 0kB
+[So lis  6 17:02:49 2021] Total swap = 2097148kB
+[So lis  6 17:02:49 2021] 484927 pages RAM
+[So lis  6 17:02:49 2021] 0 pages HighMem/MovableOnly
+[So lis  6 17:02:49 2021] 15501 pages reserved
+[So lis  6 17:02:49 2021] 0 pages cma reserved
+[So lis  6 17:02:49 2021] 0 pages hwpoisoned
+[So lis  6 17:02:49 2021] Tasks state (memory values in pages):
+[So lis  6 17:02:49 2021] [  pid  ]   uid  tgid total_vm      rss pgtables_bytes swapents oom_score_adj name
+[So lis  6 17:02:49 2021] [    246]     0   246    36451      127   311296      194          -250 systemd-journal
+[So lis  6 17:02:49 2021] [    283]     0   283     5472      106    61440      396         -1000 systemd-udevd
+[So lis  6 17:02:49 2021] [    298]   100   298     4638       50    77824      208             0 systemd-network
+[So lis  6 17:02:49 2021] [    455]   101   455     6113       56    86016     1060             0 systemd-resolve
+[So lis  6 17:02:49 2021] [    457]   102   457    22605       23    77824      215             0 systemd-timesyn
+[So lis  6 17:02:49 2021] [    484]     0   484      635        0    45056       44             0 acpid
+[So lis  6 17:02:49 2021] [    491]  1000   491    10703      675   122880     2335             0 python3
+[So lis  6 17:02:49 2021] [    493]   115   493     2128       47    53248       63             0 avahi-daemon
+[So lis  6 17:02:49 2021] [    494]     0   494     2986       25    53248       42             0 cron
+[So lis  6 17:02:49 2021] [    495]   103   495     1945      128    53248      151          -900 dbus-daemon
+[So lis  6 17:02:49 2021] [    500]  1000   500    10719       97   118784     2920             0 python3
+[So lis  6 17:02:49 2021] [    504]     0   504    20472       37    57344       54             0 irqbalance
+[So lis  6 17:02:49 2021] [    508]     0   508     8536        0   106496     1913             0 networkd-dispat
+[So lis  6 17:02:49 2021] [    510]     0   510    59205        0    94208      300             0 polkitd
+[So lis  6 17:02:49 2021] [    512]   104   512    56083      101    81920      386             0 rsyslogd
+[So lis  6 17:02:49 2021] [    517]     0   517     2698       52    57344      294             0 smartd
+[So lis  6 17:02:49 2021] [    520]     0   520     4217       36    69632      213             0 systemd-logind
+[So lis  6 17:02:49 2021] [    521]     0   521    32096       36    90112      173             0 thermald
+[So lis  6 17:02:49 2021] [    522]     0   522     3418       14    65536      145             0 wpa_supplicant
+[So lis  6 17:02:49 2021] [    534]   115   534     2082        0    49152       83             0 avahi-daemon
+[So lis  6 17:02:49 2021] [    549]     0   549     2740        0    49152       33             0 agetty
+[So lis  6 17:02:49 2021] [    551]     0   551     3042        0    61440      230         -1000 sshd
+[So lis  6 17:02:49 2021] [    552]     0   552    78434        0   118784      442             0 ModemManager
+[So lis  6 17:02:49 2021] [    561]  1000   561    10719      319   106496     2681             0 python3
+[So lis  6 17:02:49 2021] [    562]  1000   562    10703      294   102400     2698             0 python3
+[So lis  6 17:02:49 2021] [    563]  1000   563    10839      573   110592     2509             0 python3
+[So lis  6 17:02:49 2021] [    564]  1000   564    10823      412   114688     2659             0 python3
+[So lis  6 17:02:49 2021] [    619]   120   619    63338       20   131072      471             0 whoopsie
+[So lis  6 17:02:49 2021] [    620]   116   620     2812       24    69632       94             0 kerneloops
+[So lis  6 17:02:49 2021] [    622]   116   622     2812       24    61440       95             0 kerneloops
+[So lis  6 17:02:49 2021] [1327638]  1000 1327638     9667      492   110592     1491             0 python3
+[So lis  6 17:02:49 2021] [1371691]     0 1371691   307129     1268   290816     2540          -900 snapd
+[So lis  6 17:02:49 2021] [1546199]  1000 1546199    95122      544   602112     9788             0 python3
+[So lis  6 17:02:49 2021] [1546211]  1000 1546211  2452182   389470 10489856   502616             0 python3
+[So lis  6 17:02:49 2021] [1550074]     0 1550074     8577     1102   102400        2             0 python3
+[So lis  6 17:02:49 2021] [1550077]     0 1550077     8577     1105   106496        0             0 python3
+[So lis  6 17:02:49 2021] [1550081]     0 1550081     8560     1105   106496        0             0 python3
+[So lis  6 17:02:49 2021] [1550082]     0 1550082     8560     1104   102400        0             0 python3
+[So lis  6 17:02:49 2021] oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=/,mems_allowed=0,global_oom,task_memcg=/system.slice/allsky.service,task=python3,pid=1546211,uid=1000
+[So lis  6 17:02:49 2021] Out of memory: Killed process 1546211 (python3) total-vm:9808728kB, anon-rss:1557872kB, file-rss:0kB, shmem-rss:8kB, UID:1000 pgtables:10244kB oom_score_adj:0
+[So lis  6 17:02:49 2021] oom_reaper: reaped process 1546211 (python3), now anon-rss:0kB, file-rss:0kB, shmem-rss:8kB
+
+teide$ systemctl status allsky_storage.service
+
+    ● allsky_storage.service - allsky_storage
+       Loaded: loaded (/etc/systemd/system/allsky_storage.service; enabled; vendor preset: enabled)
+       Active: active (running) since Sun 2021-11-07 17:21:35 CET; 23min ago
+     Main PID: 31094 (python3)
+        Tasks: 1 (limit: 153)
+       Memory: 228.5M
+       CGroup: /system.slice/allsky_storage.service
+               └─31094 /usr/bin/python3 /opt/allsky-storage/bin/allsky_storage.py
+
+    sirius# dmesg -T
+
+        [Sun Nov  7 17:25:32 2021] Memory cgroup stats for
+        /lxc/teide/system.slice/allsky_storage.service: cache:152KB rss:243096KB
+        rss_huge:145408KB shmem:0KB mapped_file:132KB dirty:0KB writeback:0KB
+        swap:0KB inactive_anon:121520KB active_anon:121520KB inactive_file:0KB
+        active_file:0KB unevictable:0KB
+
+        [Sun Nov  7 17:25:32 2021] Tasks state (memory values in pages):
+        [Sun Nov  7 17:25:32 2021] [  pid  ]   uid  tgid total_vm      rss pgtables_bytes swapents oom_score_adj name
+        [Sun Nov  7 17:25:32 2021] [   8497] 2100000  8497    42412      600   102400        0             0 systemd
+        [Sun Nov  7 17:25:32 2021] [   9057] 2100000  9057     2913       64    61440        0             0 cron
+        [Sun Nov  7 17:25:32 2021] [   9059] 2100000  9059     4878      254    77824        0             0 systemd-logind
+        [Sun Nov  7 17:25:32 2021] [   9060] 2101001  9060     8631      505   110592     2942             0 gunicorn3
+        [Sun Nov  7 17:25:32 2021] [   9061] 2100107  9061     2231      178    53248        0             0 dbus-daemon
+        [Sun Nov  7 17:25:32 2021] [   9074] 2100000  9074    39047      361    77824        0             0 rsyslogd
+        [Sun Nov  7 17:25:32 2021] [   9076] 2100000  9076     3963      215    69632        0             0 sshd
+        [Sun Nov  7 17:25:32 2021] [   9081] 2100000  9081      605       27    36864        0             0 agetty
+        [Sun Nov  7 17:25:32 2021] [   9082] 2100000  9082      605       27    45056        0             0 agetty
+        [Sun Nov  7 17:25:32 2021] [   9083] 2100000  9083     2133       29    57344        0             0 agetty
+        [Sun Nov  7 17:25:32 2021] [   9089] 2100000  9089      605       27    45056        0             0 agetty
+        [Sun Nov  7 17:25:32 2021] [   9090] 2100000  9090      605       27    45056        0             0 agetty
+        [Sun Nov  7 17:25:32 2021] [   9100] 2100000  9100    16616      478   126976        0             0 nginx
+        [Sun Nov  7 17:25:32 2021] [   9276] 2100000  9276    10869      212    81920        0             0 master
+        [Sun Nov  7 17:25:32 2021] [   9278] 2100105  9278    10887      213    81920        0             0 qmgr
+        [Sun Nov  7 17:25:32 2021] [  10047] 2101001 10047   397749    23758  1105920     1819             0 gunicorn3
+        [Sun Nov  7 17:25:32 2021] [  10096] 2101001 10096   399603    27562  1118208      893             0 gunicorn3
+        [Sun Nov  7 17:25:32 2021] [  10585] 2101001 10585   408878    35171  1183744      874             0 gunicorn3
+        [Sun Nov  7 17:25:32 2021] [  10935] 2101001 10935   400614    27570  1122304      873             0 gunicorn3
+        [Sun Nov  7 17:25:32 2021] [  17171] 2100000 17171    34788    23846   331776        0             0 systemd-journal
+        [Sun Nov  7 17:25:32 2021] [   2675] 2100033  2675    16616      517   126976        0             0 nginx
+        [Sun Nov  7 17:25:32 2021] [   2677] 2100033  2677    16616      517   126976        0             0 nginx
+        [Sun Nov  7 17:25:32 2021] [   2678] 2100033  2678    16616      508   126976        0             0 nginx
+        [Sun Nov  7 17:25:32 2021] [   2681] 2100033  2681    16616      508   126976        0             0 nginx
+        [Sun Nov  7 17:25:32 2021] [   2682] 2100033  2682    16616      508   126976        0             0 nginx
+        [Sun Nov  7 17:25:32 2021] [   2695] 2100033  2695    16616      508   126976        0             0 nginx
+        [Sun Nov  7 17:25:32 2021] [   2713] 2100033  2713    16616      508   126976        0             0 nginx
+        [Sun Nov  7 17:25:32 2021] [   2715] 2100033  2715    16616      508   126976        0             0 nginx
+        [Sun Nov  7 17:25:32 2021] [   2716] 2100033  2716    16616      508   126976        0             0 nginx
+        [Sun Nov  7 17:25:32 2021] [   2717] 2100033  2717    16616      508   126976        0             0 nginx
+        [Sun Nov  7 17:25:32 2021] [   2719] 2100033  2719    16616      508   126976        0             0 nginx
+        [Sun Nov  7 17:25:32 2021] [   2720] 2100033  2720    16616      508   126976        0             0 nginx
+        [Sun Nov  7 17:25:32 2021] [   2721] 2100033  2721    16616      508   126976        0             0 nginx
+        [Sun Nov  7 17:25:32 2021] [   2722] 2100033  2722    16616      508   126976        0             0 nginx
+        [Sun Nov  7 17:25:32 2021] [   2723] 2100033  2723    16616      508   126976        0             0 nginx
+        [Sun Nov  7 17:25:32 2021] [   2724] 2100033  2724    16616      508   126976        0             0 nginx
+        [Sun Nov  7 17:25:32 2021] [  26555] 2101000 26555    74007    60256   618496      107             0 python3
+        [Sun Nov  7 17:25:32 2021] [   2605] 2100105  2605    10874      204    77824        0             0 pickup
+        [Sun Nov  7 17:25:32 2021] Memory cgroup out of memory: Kill process 26555 (python3) score 57 or sacrifice child
+        [Sun Nov  7 17:25:32 2021] Killed process 26555 (python3) total-vm:296028kB, anon-rss:241020kB, file-rss:4kB, shmem-rss:0kB
+        [Sun Nov  7 17:25:32 2021] oom_reaper: reaped process 26555 (python3), now anon-rss:0kB, file-rss:0kB, shmem-rss:0kB
+
+    allsky@teide:/opt/allsky-storage/log$ cat allsky_storage_xmlrpc.log |grep Starting |grep 2021-11-06 |wc -l
+    76
+    allsky@teide:/opt/allsky-storage/log$ cat allsky_storage_xmlrpc.log |grep Starting |grep 2021-11-05 |wc -l
+    79
+    allsky@teide:/opt/allsky-storage/log$ cat allsky_storage_xmlrpc.log |grep Starting |grep 2021-11-04 |wc -l
+    76
+
+    sirius# dmesg -T |grep oom
+
+        [Sun Nov  7 13:51:20 2021] [  pid  ]   uid  tgid total_vm      rss pgtables_bytes swapents oom_score_adj name
+        [Sun Nov  7 13:51:20 2021] oom_reaper: reaped process 19234 (python3), now anon-rss:0kB, file-rss:0kB, shmem-rss:0kB
+        [Sun Nov  7 14:30:45 2021] gunicorn3 invoked oom-killer: gfp_mask=0x6200ca(GFP_HIGHUSER_MOVABLE), nodemask=(null), order=0, oom_score_adj=0
+        [Sun Nov  7 14:30:45 2021]  oom_kill_process+0x272/0x280
+        [Sun Nov  7 14:30:45 2021] [  pid  ]   uid  tgid total_vm      rss pgtables_bytes swapents oom_score_adj name
+        [Sun Nov  7 14:30:45 2021] oom_reaper: reaped process 902 (python3), now anon-rss:0kB, file-rss:0kB, shmem-rss:0kB
+        [Sun Nov  7 17:25:32 2021] gunicorn3 invoked oom-killer: gfp_mask=0x6200ca(GFP_HIGHUSER_MOVABLE), nodemask=(null), order=0, oom_score_adj=0
+        [Sun Nov  7 17:25:32 2021]  oom_kill_process+0x272/0x280
+        [Sun Nov  7 17:25:32 2021] [  pid  ]   uid  tgid total_vm      rss pgtables_bytes swapents oom_score_adj name
+        [Sun Nov  7 17:25:32 2021] oom_reaper: reaped process 26555 (python3), now anon-rss:0kB, file-rss:0kB, shmem-rss:0kB
+        [Sun Nov  7 17:56:01 2021] gunicorn3 invoked oom-killer: gfp_mask=0x6200ca(GFP_HIGHUSER_MOVABLE), nodemask=(null), order=0, oom_score_adj=0
+        [Sun Nov  7 17:56:01 2021]  oom_kill_process+0x272/0x280
+        [Sun Nov  7 17:56:01 2021] [  pid  ]   uid  tgid total_vm      rss pgtables_bytes swapents oom_score_adj name
+        [Sun Nov  7 17:56:01 2021] oom_reaper: reaped process 12169 (python3), now anon-rss:0kB, file-rss:0kB, shmem-rss:0kB
+
+    teide# free -m
+
+                      total        used        free      shared  buff/cache   available
+        Mem:           4096        1727        2367        7936           0        2367
+        Swap:             0           0           0
+
+    teide# uptime
+
+        17:57:23 up 132 days,  4:47,  3 users,  load average: 0,70, 0,73, 0,64

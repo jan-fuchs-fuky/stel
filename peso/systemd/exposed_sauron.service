@@ -1,0 +1,18 @@
+[Unit]
+Description=exposed_sauron
+
+[Service]
+User=root
+StandardOutput=null
+
+Environment=HOME=/root
+Environment=LOG4C_RCPATH=/opt/exposed-r514M/etc/sauron"
+Environment=TELESCOPE_HOST="alhena"
+Environment=TELESCOPE_PORT="9999"
+Environment=SPECTROGRAPH_HOST="alhena"
+Environment=SPECTROGRAPH_PORT="8888"
+
+ExecStart=/opt/exposed-r514M/bin/exposed -c /opt/exposed-r514M/etc/exposed-sauron.cfg
+
+RestartSec=60
+Restart=on-failure

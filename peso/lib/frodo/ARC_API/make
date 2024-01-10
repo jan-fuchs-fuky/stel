@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# ARCH 32
+./clean
+
+cd ./2.0
+make
+cd -
+
+cd ./3.0
+make
+cd -
+
+./copy 32
+
+# ARCH 64
+./clean
+
+cd ./2.0
+make m64
+cd -
+
+cd ./3.0
+make m64
+cd -
+
+./copy 64
+./clean

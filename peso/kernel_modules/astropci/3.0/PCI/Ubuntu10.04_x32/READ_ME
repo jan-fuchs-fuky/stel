@@ -1,0 +1,104 @@
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   AstroPCI Driver Version 3.0 - Ubuntu 10.04               ( Aug 23, 2011 )
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+This driver has been tested under Ubuntu 10.04 x64 ( 2.6.32-33-generic )
+and will PROBABLY NOT work with older kernels.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   Compiling and Installing
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Before compiling, you must make sure the following directories exists. If
+they do not, then you must become root and create them. These directories are
+where the driver files will be installed.
+
+/lib/modules/`uname -r`/extra
+/lib/modules/`uname -r`/weak-updates
+
+To compile and install the driver, which will cause the driver to
+auto-load on each subsequent boot, use the following commands:
+
+%> make				( NOT as root/su )
+%> sudo make install		( as root/su )
+%> sudo ./Load_AstroPCI		( as root/su )
+
+Note, you must be root to execute the last two commands or they will fail.
+If the driver fails to auto-load on the next boot, check the following:
+
+1. The driver 'astropci.ko' exists in /lib/modules/`uname -r`/extra
+
+2. The following file exists:
+
+	/etc/udev/rules.d/52-astropci.rules
+
+3. The module is istalled:
+
+	cat /proc/modules
+
+	Should produce something like:
+
+	astropci 11355 0 - Live 0xffffffffa0126000
+
+4. The following file should exist:
+
+	/dev/astropci0
+
+To manually install the driver without having it auto-load on the
+next boot, run 'sudo insmod astropci.ko'.  Run 'sudo rmmod -f astropci.ko'
+to remove it.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   !!! IMPORTANT !!! Allocating Image Buffer Memory
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+In order for this driver to function, the following must be set in grub
+( /etc/default/grub ).
+
+Edit the file /etc/default/grub and append "mem=xxxM" to the end of the
+GRUB_CMDLINE_LINUX_DEFAULT line, where xxx is the amount of RAM you DO NOT
+want to use for an image buffer. So, if your computer has 512Mb of RAM and
+you want to have a 12Mb image buffer, you must append mem=500M. If this
+doesn't work, then try using the following instead: mem=500M memmap=12M@500M
+
+Example:
+-------
+1. sudo vi /etc/default/grub
+
+2. Add "mem=xxxM" to command line:
+
+	GRUB_CMDLINE_LINUX_DEFAULT="quiet splash mem=1900M"
+
+3. Save the file and update grub:
+
+	sudo update-grub
+
+4. Then reboot!
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   Errors/Issues
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+IF A PROBLEM OCCURS (such as readout produces 0 pixels):
+-------------------------------------------------------
+1. Make sure you edited grub to create an image buffer.
+
+2. Contact Scott Streit (streit@astro-cam.com)
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   The driver contains the following files:
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+astropci.c:		Main source file. 
+astriopci_defs.h: 	General variables and structures definitions
+astropci_io.h: 		Entry points for accesing the driver using user-code
+			(basically ioctl command definitions)
+Makefile: 		Makefile ...
+Load_AstroPCI: 		Simple script for loading the driver to the kernel.
+			It will create all the necessary entries for using
+	    		the driver.
+UnLoad_AstroPCI: 	Script for unloading the driver from the kernel
+
+When you compile the source, you are going to get the module: astropci.ko.
+

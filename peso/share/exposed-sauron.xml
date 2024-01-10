@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<exposed>
+    <user>tcsuser</user>
+    <password>observ2m</password>
+    <instrument>DUMMY</instrument>
+    <ip>127.0.0.1</ip>
+    <port>5000</port>
+    <archive>0</archive>
+    <instrument_prefix>x</instrument_prefix>
+
+    <modules>
+        <ccd>/home/fuky/svn/peso/trunk/modules/mod_ccd_sauron.so</ccd>
+    </modules>
+
+    <paths>
+        <output>/share/data/DUMMY:/share/data/DUMMY/TECH</output>
+        <archive>/share/data/archive/DUMMY:/share/data/archive/DUMMY/TECH</archive>
+    </paths>
+
+    <commands>
+        <begin>
+            <flat>true</flat>
+            <comp>true</comp>
+            <target>true</target>
+        </begin>
+
+        <end>
+            <flat>true</flat>
+            <comp>true</comp>
+            <target>true</target>
+        </end>
+    </commands>
+
+    <ccd>
+        <temp>-110</temp>
+        <readout_time>15</readout_time>
+        <x1>1</x1>
+        <x2>2048</x2>
+        <xb>1</xb>
+        <y1>1</y1>
+        <y2>2048</y2>
+        <yb>1</yb>
+    </ccd>
+</exposed>

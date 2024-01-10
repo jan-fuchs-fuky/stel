@@ -1,0 +1,9 @@
+gvim -p \
+cfg.c \
+cfg.h \
+fce.c \
+fce.h \
+socket.c \
+socket.h \
+thread.c \
+thread.h \

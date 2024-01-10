@@ -1,0 +1,1 @@
+cmd_/Photometrics/Release27/driverV26/pvpci.ko := ld -m elf_i386 -r -o /Photometrics/Release27/driverV26/pvpci.ko /Photometrics/Release27/driverV26/pvpci.o /Photometrics/Release27/driverV26/pvpci.mod.o

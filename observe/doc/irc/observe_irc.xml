@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE book PUBLIC '-//OASIS//DTD DocBook XML V4.5//EN' 
+          'http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd'>
+<book lang="cs">
+
+  <bookinfo>
+    <title>Observe chat (IRC)</title>
+    <date>02-05-2017</date>
+    <author>
+      <firstname>Jan</firstname>
+      <surname>Fuchs</surname>
+      <email>fuky@asu.cas.cz</email>
+    </author>
+  </bookinfo>
+
+  <chapter>
+
+    <title>Nastavení chatování v programu Pidgin pomocí IRC</title>
+
+    <para>Program Pidgin bývá standartní součástí linuxových distribucí, stačí
+    ho doinstalovat, např. v Debianu pomocí příkazu:</para>
+    <programlisting>
+    # apt-get install pidgin</programlisting>
+
+    <para>Pro Windows a Mac OS X si ho stáhněte z http://www.pidgin.im/download/.</para>
+
+    <para>Po spuštění programu Pidgin přidejte IRC účet, který se bude
+    připojovat k serveru stel.asu.cas.cz na port 6697 s aktivovaným SSL.
+    Jako uživatelské jméno použijte své přijmení. Po připojení na server se
+    připojte ke kanálu #observe, kde bude čekat pozorovatel.</para>
+
+    <para>Klikněte na 'Accounts/Manage Accounts' a poté na tlačítko 'Add...'</para>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="images/pidgin_001_welcome.png" format="PNG"/>
+      </imageobject>
+      <caption><para>Přidání nového účtu</para></caption>
+    </mediaobject>
+
+    <para>V záložce 'Basic' nastavte 'Protocol' na 'IRC', jako 'Username'
+    zadejte vaše přijmení, 'Server' je 'stel.asu.cas.cz', heslo vám předám já.</para>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="images/pidgin_002_add_basic.png" format="PNG"/>
+      </imageobject>
+      <caption><para></para></caption>
+    </mediaobject>
+
+    <para>V záložce 'Advanced' nastavte 'Port' na 6697, 'Ident name' a 'Real
+    name' na přijmení, nezapoměňte zaškrtnout volbu 'Use SSL', nakonec klikněte
+    na tlačítko 'Save'.</para>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="images/pidgin_003_add_advanced.png" format="PNG"/>
+      </imageobject>
+      <caption><para></para></caption>
+    </mediaobject>
+
+    <para>Po připojení k serveru budete vyzváni k akceptování certifikátu,
+    klikněte na tlačítko 'View Certificate' a zkontrolujte zda-li souhlasí
+    Fingerprint (SHA1): 02:b2:18:97:e0:e8:cc:02:5b:d5:a1:54:1a:e8:6d:c6:c4:4c:e9:1c.
+    Pokud ano, tak můžete okno s fingerprintem zavřít a kliknout na tlačítko 'Accept'.</para>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="images/pidgin_004_accept_cert.png" format="PNG"/>
+      </imageobject>
+      <caption><para></para></caption>
+    </mediaobject>
+
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="images/pidgin_005_view_cert.png" format="PNG"/>
+      </imageobject>
+      <caption><para>View Certificate - Ukázka okna s fingerprintem</para></caption>
+    </mediaobject>
+
+    <para>Jste-li ve stavu 'Available', tak můžete z menu vybrat 'Buddies/Join a Chat', v okně
+    nastavte 'Channel' na #observe a klikněte na tlačítko 'Join'. Poté můžete
+    začít s konverzací. Alternativně také můžete použít tlačítko 'Room List',
+    pokud se již připojil pozorovatel, tak tam kanál #observe uvidíte.</para>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="images/pidgin_006_buddies_join_a_chat.png" format="PNG"/>
+      </imageobject>
+      <caption><para></para></caption>
+    </mediaobject>
+
+    <para>Zkontrolujte si zda-li máte účet povolený.</para>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="images/pidgin_001_manage_accounts.png" format="PNG"/>
+      </imageobject>
+      <caption><para>Manage Accounts</para></caption>
+    </mediaobject>
+
+  </chapter>
+
+</book>

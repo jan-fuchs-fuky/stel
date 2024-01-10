@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo "USB unbind"
+echo -n "0000:00:15.0" >/sys/bus/pci/drivers/xhci_hcd/unbind
+echo "Waiting 2 seconds"
+sleep 2
+
+echo "USB bind"
+echo -n "0000:00:15.0" >/sys/bus/pci/drivers/xhci_hcd/bind
+echo "Waiting 2 seconds"
+sleep 2

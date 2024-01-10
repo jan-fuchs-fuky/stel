@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [ $# -ne 10 ]; then
+    echo "Usage: $0 OBJECT RA DEC TLE_POSITION TRGV TRHD FOCUS_POSITION CAMERA_POSITION EXPTIME EXPCOUNT"
+    exit
+fi
+
+echo "Expose $9 seconds"
+
+ssh -X root@pc-tubus.stel /root/bin/expose_g1_cmd "$*"

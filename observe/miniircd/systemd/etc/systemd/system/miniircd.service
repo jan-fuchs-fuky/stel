@@ -1,0 +1,15 @@
+[Unit]
+Description=miniircd
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Type=forking
+User=root
+ExecStart=/usr/bin/python2.7 /opt/miniircd/bin/miniircd --password-file /etc/miniircd/miniircd.pwd --pidfile=/opt/miniircd/run/miniircd.pid --verbose --logdir=/log/channel --setuid=miniircd --ssl-pem-file=/stel.asu.cas.cz.pem --chroot=/home/miniircd --log-file=/log/miniircd.log -d
+KillMode=control-group
+StandardOutput=journal+console
+PIDFile=/opt/miniircd/run/miniircd.pid
+
+[Install]
+WantedBy=default.target

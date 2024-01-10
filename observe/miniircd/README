@@ -1,0 +1,80 @@
+https://github.com/jrosdahl/miniircd
+
+tyche2# adduser --disabled-password --uid 10001 miniircd
+tyche2# chown root.root /home/miniircd
+tyche2# chmod 755 miniircd
+tyche2# cd /home/miniircd
+tyche2# mkdir -p log/channel
+tyche2# chown -R miniircd.miniircd log
+tyche2# mkdir dev
+
+[vserver] mknod inside vserver (bind error)
+http://www.paul.sladen.org/vserver/archives/200903/0023.html
+
+    "many, the simplest and still secure approach is
+     to create the necessary devices from the host
+     (either via mknod or simply by copying them into
+     the guest)"
+
+root@esterka:/etc/vservers/tyche2/vdir/home/miniircd/dev# mknod null c 1 3
+root@esterka:/etc/vservers/tyche2/vdir/home/miniircd/dev# mknod urandom c 1 9
+root@esterka:/etc/vservers/tyche2/vdir/home/miniircd/dev# chmod 666 null urandom
+
+tyche2# mkdir /etc/miniircd
+tyche2# chmod og-rwx /etc/miniircd
+tyche2# cd /etc/miniircd
+tyche2# cp -r /usr/share/easy-rsa .
+
+tyche2# vim vars
+
+    export KEY_SIZE=2048
+    export CA_EXPIRE=3650
+    export KEY_EXPIRE=3650
+    export KEY_COUNTRY="CZ"
+    export KEY_PROVINCE="Czech Republic"
+    export KEY_CITY="Ondrejov"
+    export KEY_ORG="Astronomical Institute ASCR"
+    export KEY_EMAIL="admini@sunstel.asu.cas.cz"
+    export KEY_OU=stel.asu.cas.cz
+    export KEY_NAME=stel.asu.cas.cz
+    export KEY_CN=stel.asu.cas.cz
+    export KEY_ALTNAMES="irc"
+
+tyche2# . ./vars
+tyche2# ./clean-all
+tyche2# ./build-ca
+tyche2# ./build-key-server stel.asu.cas.cz
+tyche2# cat stel.asu.cas.cz.crt stel.asu.cas.cz.key >stel.asu.cas.cz.pem
+tyche2# chmod og-rwx stel.asu.cas.cz.pem
+
+Ponechat pouze casti:
+
+    -----BEGIN CERTIFICATE-----
+    ...
+    -----END CERTIFICATE-----
+    -----BEGIN PRIVATE KEY-----
+    ...
+    -----END PRIVATE KEY-----
+
+    tyche2# vim stel.asu.cas.cz.pem
+
+tyche2# cd /home/miniircd
+tyche2# cp /etc/miniircd/easy-rsa/keys/stel.asu.cas.cz.pem .
+tyche2# chmod -w stel.asu.cas.cz.pem
+tyche2# chown miniircd.miniircd stel.asu.cas.cz.pem
+
+Nakopirovat miniircd do:
+
+    tyche2# mkdir -p /opt/miniircd/bin
+
+Presunout "import ssl" na zacatek skriptu jinak:
+
+    tyche2# /opt/miniircd/bin/miniircd --verbose --debug --logdir=/log/channel --setuid=miniircd --ssl-pem-file=/stel.asu.cas.cz.pem --chroot=/home/miniircd
+    Listening on port 6697.
+    Changed root directory to /home/miniircd
+    Setting uid:gid to 10001:10001
+    Traceback (most recent call last):
+      File "/opt/miniircd/bin/miniircd", line 929, in <module>
+      File "/opt/miniircd/bin/miniircd", line 924, in main
+      File "/opt/miniircd/bin/miniircd", line 784, in start
+    ImportError: No module named ssl

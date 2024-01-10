@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "G2 power off"
+ssh tcsuser@pc-tubus.stel /home/tcsuser/bin/toptec C0

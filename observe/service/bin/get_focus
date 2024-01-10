@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "GET focus position"
+ssh tcsuser@pc-tubus.stel /home/tcsuser/bin/toptec P1

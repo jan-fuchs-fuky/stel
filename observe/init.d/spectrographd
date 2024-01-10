@@ -1,0 +1,69 @@
+#! /bin/bash                                         
+
+### BEGIN INIT INFO
+# Provides:          spectrographd
+# Required-Start:    $local_fs $remote_fs $network $syslog $named
+# Required-Stop:     $local_fs $remote_fs $network $syslog $named
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# X-Interactive:     false
+# Short-Description: Start/stop spectrographd
+### END INIT INFO
+
+#set -e
+
+. /lib/lsb/init-functions
+
+if [[ ! -d "$SPECTROGRAPHD_DIR" ]]; then
+    export SPECTROGRAPHD_DIR=/opt/spectrographd
+fi
+
+#if [[ "$USER" == "root" ]]; then
+#    SPECTROGRAPHD_USER="spectrographd"
+#else
+#    SPECTROGRAPHD_USER="$USER"
+#fi
+
+if [[ "$USER" == "root" ]] || [[ -z "$USER" ]]; then
+    export HOME=/root
+fi
+
+export LOG4C_RCPATH="${SPECTROGRAPHD_DIR}/etc"
+
+SPECTROGRAPHD_USER="$USER"
+PATH=/bin:/usr/bin:/sbin:/usr/sbin
+DAEMON="${SPECTROGRAPHD_DIR}/bin/spectrographd"
+PIDFILE="${SPECTROGRAPHD_DIR}/run/spectrographd.pid"
+
+# Arguments to atd
+#
+ARGS=""
+
+test -x $DAEMON || exit 0
+
+case "$1" in
+    start)
+        log_action_begin_msg "Starting spectrographd daemon"
+        start-stop-daemon --start --quiet \
+            --pidfile "$PIDFILE" \
+            --chuid "$SPECTROGRAPHD_USER" \
+            --exec "$DAEMON" -- $ARGS
+        log_action_end_msg $?
+        ;;
+    stop)
+        log_action_begin_msg "Stopping spectrographd daemon"
+        start-stop-daemon --stop --quiet --pidfile "$PIDFILE"
+        log_action_end_msg $?
+        ;;
+    restart|force-reload)
+        "$0" stop
+        sleep 2
+        "$0" start
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart|force-reload}"
+        exit 1
+        ;;
+esac
+
+exit 0

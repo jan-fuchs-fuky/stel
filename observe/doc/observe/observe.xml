@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE book PUBLIC '-//OASIS//DTD DocBook XML V4.5//EN' 
+          'http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd'>
+<book lang="cs">
+
+  <bookinfo>
+    <title>Observe</title>
+    <date>14-09-2015</date>
+    <author>
+      <firstname>Jan</firstname>
+      <surname>Fuchs</surname>
+      <email>fuky@asu.cas.cz</email>
+    </author>
+  </bookinfo>
+
+  <chapter>
+
+    <title>Nastavení volání pomocí SIP v programu Ekiga</title>
+
+    <para>Program Ekiga bývá standartní součástí linuxových distribucí, stačí
+    ho doinstalovat, např. v Debianu pomocí příkazu:</para>
+    <programlisting>
+    # aptitude install ekiga</programlisting>
+
+    <para>Po prvním spuštění se zobrazí následující obrazovka, na které
+    kliknete na tlačítko "Cancel".</para>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="images/ekiga01.png" format="PNG" scalefit="1"/>
+      </imageobject>
+      <caption><para>Welcome to Ekiga</para></caption>
+    </mediaobject>
+
+    <para>V hlavním okně klikněte na "Edit/Accounts".</para>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="images/ekiga02.png" format="PNG"/>
+      </imageobject>
+      <caption><para>Edit your accounts</para></caption>
+    </mediaobject>
+
+    <para>V nově otevřeném okně klikněte na "Accounts/Add a SIP Account".</para>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="images/ekiga03.png" format="PNG"/>
+      </imageobject>
+      <caption><para>Add a SIP Account</para></caption>
+    </mediaobject>
+
+    <para>Vyplňte údaje o účtu na Odorik.cz a klikněte na tlačítko "OK".</para>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="images/ekiga04.png" format="PNG"/>
+      </imageobject>
+      <caption><para></para></caption>
+    </mediaobject>
+
+    <para>Pokud jste zada-li správné údaje změní se "Status" na "Registered" a
+    můžete toto okno zavřít.</para>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="images/ekiga05.png" format="PNG"/>
+      </imageobject>
+      <caption><para></para></caption>
+    </mediaobject>
+
+    <para>Klikněte pravým tlačítkem na "Contacts" a vyberte "New Contact"</para>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="images/ekiga07.png" format="PNG"/>
+      </imageobject>
+      <caption><para>New Contact</para></caption>
+    </mediaobject>
+
+    <para>Vyplňte kontakt, který vám umožní testovat spojení, po zavolání na
+    "Echo test" mluvte do mikrofonu a uslyšíte se formou ozvěny.</para>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="images/ekiga06.png" format="PNG"/>
+      </imageobject>
+      <caption><para>Echo test</para></caption>
+    </mediaobject>
+
+    <para>Pak přidejte kontakt "Testovací hovor", když na něj zavoláte, tak
+    můžete nahrát krátkou zprávu, která je vám následně přehrána.</para>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="images/ekiga08.png" format="PNG"/>
+      </imageobject>
+      <caption><para>Testovací hovor</para></caption>
+    </mediaobject>
+
+    <para>Nakonec přidejte kontakt pro volání do Coudé.</para>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="images/ekiga10.png" format="PNG"/>
+      </imageobject>
+      <caption><para>Coudé</para></caption>
+    </mediaobject>
+
+    <para>Volat můžete tak, že dvakrát poklepete levým tlačítkem na požadovaný
+    kontakt nebo jednou kliknete pravým tlačítkem na kontakt a zvolíte volbu
+    "Call".</para>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="images/ekiga09.png" format="PNG"/>
+      </imageobject>
+      <caption><para>Call</para></caption>
+    </mediaobject>
+
+  </chapter>
+
+</book>

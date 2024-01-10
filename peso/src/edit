@@ -1,0 +1,15 @@
+gvim -p \
+peso.py \
+exposed.c \
+exposed.h \
+cfg.c \
+cfg.h \
+mod_ccd_dummy.c \
+mod_ccd_sauron.c \
+mod_ccd_frodo.c \
+mod_ccd.c \
+mod_ccd.h \
+modules.c \
+modules.h \
+../doc/README \
+../Makefile \

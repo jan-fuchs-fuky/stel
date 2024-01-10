@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 POSITION"
+    exit
+fi
+
+POSITION="$1"
+
+echo "SET camera position $POSITION"
+ssh tcsuser@pc-tubus.stel /home/tcsuser/bin/toptec M2 "$POSITION"
+
+echo "GET camera position"
+ssh tcsuser@pc-tubus.stel /home/tcsuser/bin/toptec P2

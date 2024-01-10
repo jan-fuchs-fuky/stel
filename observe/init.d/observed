@@ -1,0 +1,53 @@
+#! /bin/bash
+
+#set -e
+
+. /lib/lsb/init-functions
+
+if [[ ! -d "$OBSERVED_DIR" ]]; then
+    OBSERVED_DIR=/opt/observed
+fi
+
+if [ -z "$JAVA_HOME" ]; then
+    export JAVA_HOME=/usr/lib/jvm/java-6-sun-1.6.0.20
+fi
+
+JSVC_NODETACH=
+JSVC_DEBUG=
+#JSVC_NODETACH=-nodetach
+#JSVC_DEBUG=-debug
+
+PATH=/bin:/usr/bin:/sbin:/usr/sbin
+PIDFILE="${OBSERVED_DIR}/run/observed.pid"
+JAVALIB="${OBSERVED_DIR}/dist/observe-server.jar:/usr/share/java/commons-daemon.jar"
+
+for file in ${OBSERVED_DIR}/lib/java/*.?ar; do
+    JAVALIB="$file:$JAVALIB"
+done
+
+case "$1" in
+    start)
+        log_action_begin_msg "Starting observed daemon"
+        jsvc $JSVC_NODETACH $JSVC_DEBUG -cp $JAVALIB \
+             -pidfile $PIDFILE \
+             -Dobserve.dir=$OBSERVED_DIR \
+             cz.cas.asu.stelweb.fuky.observe.ObserveServer
+        log_action_end_msg $?
+        ;;
+    stop)
+        log_action_begin_msg "Stopping observed daemon"
+        jsvc -pidfile $PIDFILE -stop cz.cas.asu.stelweb.fuky.observe.ObserveServer
+        log_action_end_msg $?
+        ;;
+    restart|force-reload)
+        "$0" stop
+        sleep 2
+        "$0" start
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart|force-reload}"
+        exit 1
+        ;;
+esac
+
+exit 0

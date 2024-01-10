@@ -1,0 +1,20 @@
+#!/bin/bash
+
+if [ $# -ne 8 ]; then
+    echo "Usage: $0 OBJECT FIRST INCREMENT LAST FILTER BINNING_X BINNING_Y CCD_TEMP"
+    exit
+fi
+
+OBJECT="$1"
+FIRST="$2"
+INCREMENT="$3"
+LAST="$4"
+FILTER="$5"
+BINNING_X="$6"
+BINNING_Y="$7"
+CCD_TEMP="$8"
+
+for EXPTIME in $(seq $FIRST $INCREMENT $LAST); do
+    echo "Expose $EXPTIME seconds"
+    /opt/toptec/expose_g2_auto "$OBJECT" "$EXPTIME" 1 "$FILTER" "$BINNING_X" "$BINNING_Y" "$CCD_TEMP"
+done

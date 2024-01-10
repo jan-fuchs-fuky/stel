@@ -1,0 +1,53 @@
+2048;2048
+ORIGIN   ; PESO                 ; Python Exposure System for Ondrejov                ; str
+OBSERVAT ; ONDREJOV             ; Name of observatory (IRAF style)                   ; str
+LATITUDE ; 49.910555            ; Telescope latitude  (degrees), +49:54:38.0         ; float
+LONGITUD ; 14.783611            ; Telescope longitud  (degrees), +14:47:01.0         ; float
+HEIGHT   ; 528                  ; Height above sea level [m].                        ; int
+TELESCOP ; ZEISS-2m             ; 2m Ondrejov observatory telescope                  ; str
+GAIN     ; 2                    ; Electrons per ADU                                  ; int
+READNOIS ; 10                   ; Readout noise in electrons per pix                 ; int
+TELSYST  ; COUDE                ; Telescope setup - COUDE or CASSegrain              ; str
+INSTRUME ; OES                  ; Coude echelle spectrograph                         ; str
+CAMERA   ; VERSARRAY 2048B      ; Camera head name                                   ; str
+DETECTOR ; EEV 2048x2048        ; Name of the detector                               ; str
+CHIPID   ; EEV 42-40-1-368      ; Name of CCD chip                                   ; str
+BUNIT    ; ADU                  ; Unit of the array of image data                    ; str
+PREFLASH ; 0                    ; Length of preflash in seconds                      ; int
+CCDXSIZE ; 2048                 ; X Size in pixels of digitised frame                ; int
+CCDYSIZE ; 2048                 ; Y Size in pixels of digitised frame                ; int
+CCDXPIXE ; 13.5                 ; Size in microns of the pixels, in X                ; float
+CCDYPIXE ; 13.5                 ; Size in microns of the pixels, in Y                ; float
+DISPAXIS ; 1                    ; Dispersion axis along lines                        ; int
+GRATNAME ; ECHELL               ; Grating name                                       ; str
+SLITTYPE ; BLADE                ; Type of slit - blade or image slicers              ; str
+AUTOGUID ; NO                   ; Status of autoguider system                        ; str
+SLITWID  ; 0.6                  ; Slit width in mm                                   ; float
+OBJECT   ; flat                 ; Target of observation                              ; str       
+IMAGETYP ; flat                 ; Type of observation, eg. FLAT                      ; str       
+OBSERVER ; Fuky                 ; Observers                                          ; str       
+SYSVER   ; 1.94                 ;                                                    ; str       
+READSPD  ; 100KHz               ;                                                    ; str       
+FILENAME ; aqh16019.fit         ; BIAS filename                                      ; str       
+CAMFOCUS ; 0.0                  ; Camera focus position                              ; float     
+SPECTEMP ; +024.1               ; Temperature in spectrograph room                   ; float     
+SPECFILT ; 0                    ; None                                               ; None      
+SLITHEIG ; 1.07                 ; Slit height in mm                                  ; float     
+TM_START ; 41239                ; 11:27:19, 1187263639                               ; int       
+UT       ; 11:27:19             ; UTC of start of observation                        ; str       
+EPOCH    ; 2007.622177          ; Same as EQUINOX - for back compat.                 ; double    
+EQUINOX  ; 2007.622177          ; Equinox of RA and DEC                              ; double    
+DATE-OBS ; 2007-08-16           ; UTC date start of observation                      ; str       
+TM_STOP  ; 41249                ; 11:27:29, 1187263649                               ; int       
+EXPTIME  ; 10                   ; Length of observation excluding pauses             ; int       
+DARKTIME ; 10                   ; Length of observation including pauses             ; int       
+CCDTEMP  ; -110                 ; Detector temperature                               ; int       
+TM_START ; 57445                ; 15:57:25, 1217951845                               ; int       
+UT       ; 15:57:25             ; UTC of start of observation                        ; str       
+EPOCH    ; 2008.594114          ; Same as EQUINOX - for back compat.                 ; double    
+EQUINOX  ; 2008.594114          ; Equinox of RA and DEC                              ; double    
+DATE-OBS ; 2008-08-05           ; UTC date start of observation                      ; str       
+TM_STOP  ; 57446                ; 15:57:26, 1217951846                               ; int       
+EXPTIME  ; 1                    ; Length of observation excluding pauses             ; int       
+DARKTIME ; 1                    ; Length of observation including pauses             ; int       
+CCDTEMP  ; 0                    ; Detector temperature                               ; int       

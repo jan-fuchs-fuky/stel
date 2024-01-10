@@ -1,0 +1,44 @@
+#!/bin/bash
+
+program=$(basename $0)
+astropci_version=${program##astropci_module_}
+
+if [ ${#astropci_version} -ne 1 ]; then
+    astropci_version="2"
+fi
+
+echo "Steps after primula power OFF:"
+echo "    Turn OFF the controler CCD400"
+echo "    Wait 5s"
+echo "    Turn ON the controler CCD400"
+echo "    Wait 15s"
+echo "    Turn ON the primula"
+echo
+
+echo -n "Use AstroPCI version ${astropci_version}.0? (y/N) "
+read -n1 answer
+echo
+if [ "$answer" != "y" ]; then
+    exit 0
+fi
+
+case "$astropci_version" in
+    2 )
+        #rmmod astropci
+        cp /root/ccd-primula/astropci/$(uname -r)/astropci.ko /lib/modules/$(uname -r)/extra/
+        ;;
+
+    3 )
+        #rmmod astropci
+        cp /root/ccd-primula/astropci-3.0/$(uname -r)/astropci.ko /lib/modules/$(uname -r)/extra/
+        ;;
+
+    * )
+        echo "AstroPCI ${astropci_version}.0 not found"
+        exit 0
+        ;;
+esac
+
+/sbin/depmod -a
+/sbin/shutdown -h now
+exit 0

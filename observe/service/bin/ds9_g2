@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ssh -X root@pc-tubus.stel /usr/bin/ds9 -title test &

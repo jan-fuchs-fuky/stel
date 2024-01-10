@@ -1,0 +1,48 @@
+*** nginx ***
+
+# apt install nginx
+
+/etc/nginx/sites-available# cp default teide
+
+# rm /etc/nginx/sites-enabled/default
+# ln -s /etc/nginx/sites-available/teide /etc/nginx/sites-enabled/
+
+# vim /etc/nginx/sites-enabled/teide
+
+    listen 80 default_server;
+
+    listen 443 ssl default_server;
+    include snippets/snakeoil.conf;
+
+    location /allsky/ {
+        alias /data/allsky/;
+        autoindex on;
+    }
+
+# systemctl restart nginx
+
+*** js9 ***
+
+# ./configure --with-webdir=/var/www/js9
+
+    checking for web install directory... yes (/var/www/js9)
+    checking for server-side helper type... no
+    checking for sao top-level install directory... no
+    configure: creating ./config.status
+    config.status: creating Makefile
+    config.status: creating js9helper.pc
+
+# make
+
+    Editing js9Prefs.json for no helper ...
+    Editing js9prefs.js for no helper ...
+
+# make install
+
+    nothing to install for 'binaries' (no helper configured)
+    nothing to install for 'scripts' (no helper configured)
+    Installing web directories ...
+    installing web dir: plugins
+    installing web dir: params
+    ...
+    nothing to install in cgi

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4c SYSTEM "">
+
+<log4c version="1.2.1">
+
+    <config>
+        <bufsize>0</bufsize>
+        <debug level="2" />
+        <nocleanup>0</nocleanup>
+        <reread>1</reread>
+    </config>
+
+    <rollingpolicy name="spectrographd_rollingpolicy" type="sizewin" maxsize="10100100" maxnum="10" />
+    <appender name="spectrographd_fileappender" type="rollingfile" logdir="/opt/spectrographd/log" prefix="spectrographd.log" layout="dated" rollingpolicy="spectrographd_rollingpolicy" />
+    <category name="spectrographd" priority="debug" appender="spectrographd_fileappender"/>
+
+</log4c>

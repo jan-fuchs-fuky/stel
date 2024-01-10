@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Observe" default="build">
+
+    <taskdef name="xjc" classname="com.sun.tools.xjc.XJCTask">
+        <classpath>
+            <fileset dir="/usr/share/java" includes="jaxb-api.jar" />
+            <fileset dir="/usr/share/java" includes="jaxb-impl.jar" />
+            <fileset dir="/usr/share/java" includes="jaxb-xjc.jar" />
+        </classpath>
+    </taskdef>
+
+    <target name="svnversion">
+        <exec executable="git" dir="." outputproperty="svnVersion">
+            <arg line="show -s --pretty=format:%h" />
+        </exec>
+
+        <echo>${svnVersion}</echo>
+    </target>
+
+    <path id="lib.path">
+        <fileset dir="lib/java" includes="*.jar"/>
+        <fileset dir="/usr/share/java" includes="antlr-2.7.7.jar"/>
+        <fileset dir="/usr/share/java" includes="asm3-3.3.2.jar"/>
+        <fileset dir="/usr/share/java" includes="commons-codec-1.10.jar"/>
+        <fileset dir="/usr/share/java" includes="commons-collections3-3.2.2.jar"/>
+        <fileset dir="/usr/share/java" includes="dom4j-1.6.1.jar"/>
+        <fileset dir="/usr/share/java" includes="freemarker.jar"/>
+        <fileset dir="/usr/share/java" includes="hibernate3.jar"/>
+        <fileset dir="/usr/share/java" includes="javassist-3.12.1.GA.jar"/>
+        <fileset dir="/usr/share/java" includes="jsr311-api-1.1.1.jar"/>
+        <fileset dir="/usr/share/java" includes="jta-2.6+dfsg.jar"/>
+        <fileset dir="/usr/share/java" includes="junit4-4.12.jar"/>
+        <fileset dir="/usr/share/java" includes="javax.mail-1.5.6.jar"/>
+        <fileset dir="/usr/share/java" includes="slf4j-api-1.7.7.jar"/>
+        <fileset dir="/usr/share/java" includes="slf4j-nop-1.7.7.jar"/>
+        <fileset dir="/usr/share/java" includes="ws-commons-util-1.0.1.jar"/>
+        <fileset dir="/usr/share/java" includes="xmlrpc-client-3.1.3.jar"/>
+        <fileset dir="/usr/share/java" includes="xmlrpc-common-3.1.3.jar"/>
+    </path>
+
+    <pathconvert property="manifest.classpath" pathsep=" ">
+        <path refid="lib.path"/>
+        <mapper>
+            <chainedmapper>
+                 <flattenmapper/>
+                 <globmapper from="*.jar" to="lib/*.jar"/>
+            </chainedmapper>
+        </mapper>
+    </pathconvert>
+
+    <target name="build" depends="svnversion">
+        <xjc destdir="./src" package="cz.cas.asu.stelweb.fuky.observe.jaxb">
+            <schema dir="./xsd" includes="*.xsd"/>
+        </xjc>
+
+        <tstamp>
+            <format property="buildDate" pattern="yyyy-MM-dd hh:mm" locale="en,UK"/>
+        </tstamp>
+
+        <mkdir dir="./src/cz/cas/asu/stelweb/fuky/observe"/>
+
+        <echo file="./src/cz/cas/asu/stelweb/fuky/observe/ObserveBuild.java">
+// Generated automatically from build.xml. DO NOT EDIT.
+package cz.cas.asu.stelweb.fuky.observe;
+
+public class ObserveBuild {
+    private static String svnVersion = "${svnVersion}";
+    private static String date = "${buildDate}";
+
+    public ObserveBuild() {
+    }
+
+    public static String getSvnVersion() {
+        return svnVersion;
+    }
+
+    public static String getDate() {
+        return date;
+    }
+}
+        </echo>
+
+        <delete dir="./class"/>
+        <mkdir dir="./class"/>
+        <copy file="./certs/keystore.p12" todir="./class" />
+        <copy file="./src/cz/cas/asu/stelweb/fuky/observe/chat/ObserveChat.fxml" todir="./class/cz/cas/asu/stelweb/fuky/observe/chat/" />
+
+        <javac srcdir="./src"
+               destdir="./class"
+               encoding="utf-8"
+               debug="on"
+               debuglevel="lines,vars,source"
+               executable="/opt/jdk/bin/javac"
+               compiler="javac1.8"
+               classpathref="lib.path">
+            <compilerarg value="-Xlint:all"/>
+            <!-- <compilerarg value="-Xbootclasspath/p:${toString:lib.path}"/> -->
+        </javac>
+    </target>
+
+    <!--
+
+    $ ant jdeps
+    $ ant jdeps -Djdeps.option=-s
+    $ ant jdeps -Djdeps.option=-v
+
+    -->
+    <target name="jdeps">
+        <property name="jdeps.option" value="-filter:package" />
+
+        <exec executable="/opt/jdk/bin/jdeps" dir=".">
+            <arg line="-cp ${toString:lib.path} ${jdeps.option} ./class" />
+        </exec>
+    </target>
+
+    <!--
+    <target name="server">
+        <java classname="cz.cas.asu.stelweb.fuky.observe.ObserveServer" fork="true">
+            <classpath path="./class:${toString:lib.path}"/>
+        </java>
+    </target>
+    -->
+
+    <target name="start">
+        <exec executable="jsvc">
+            <arg value="-cp"/>
+            <!-- <arg value="/usr/share/java/commons-daemon.jar:${toString:lib.path}:./class"/> -->
+            <arg value="/usr/share/java/commons-daemon.jar:${toString:lib.path}:${basedir}/dist/observe-server.jar"/>
+            <arg value="-pidfile"/>
+            <arg value="/tmp/observe-server.pid"/>
+            <arg value="-outfile"/>
+            <arg value="/tmp/out.log"/>
+            <arg value="-errfile"/>
+            <arg value="/tmp/err.log"/>
+            <arg value="-Dobserve.dir=${basedir}"/>
+            <arg value="cz.cas.asu.stelweb.fuky.observe.ObserveServer"/>
+        </exec>
+    </target>
+
+    <target name="stop">
+        <exec executable="jsvc">
+            <arg value="-pidfile"/>
+            <arg value="/tmp/observe-server.pid"/>
+            <arg value="-stop"/>
+            <arg value="cz.cas.asu.stelweb.fuky.observe.ObserveServer"/>
+        </exec>
+    </target>
+
+    <target name="client">
+        <java classname="cz.cas.asu.stelweb.fuky.observe.client.ObserveClient" fork="true">
+            <classpath path="./class:${toString:lib.path}"/>
+            <jvmarg value="-Dobserve.dir=${basedir}"/>
+        </java>
+    </target>
+
+    <target name="chat">
+        <java classname="cz.cas.asu.stelweb.fuky.observe.chat.ObserveChat" fork="true">
+            <classpath path="./class:${toString:lib.path}"/>
+            <jvmarg value="-Dobserve.dir=${basedir}"/>
+        </java>
+    </target>
+
+    <target name="ST_SetupExposureXML">
+        <java classname="cz.cas.asu.stelweb.fuky.observe.self_tests.ST_SetupExposureXML" fork="true">
+            <classpath path="./class:${toString:lib.path}"/>
+            <jvmarg value="-Dobserve.dir=${basedir}"/>
+        </java>
+    </target>
+
+    <target name="war" depends="build">
+         <copy file="./properties/hibernate.cfg.xml" todir="./class" />
+         <mkdir dir="./dist" />
+         <delete file="./dist/observe.war" />
+
+         <war warfile="./dist/observe.war" webxml="./properties/web.xml">
+             <lib dir="./lib/java" />
+             <classes dir="./class" />
+
+             <zipfileset dir="./templates" prefix="WEB-INF/templates"/>
+             <zipfileset dir="./www/css" prefix="css" />
+
+             <manifest>
+                 <attribute name="Built-By" value="Jan Fuchs" />
+             </manifest>
+         </war>    
+    </target>
+
+    <target name="jar" depends="build">
+        <copy file="./certs/keystore.p12" todir="./class" />
+
+        <mkdir dir="./dist"/>
+
+        <jar destfile="./dist/observe-server.jar" filesetmanifest="merge">
+            <fileset dir="./class" followsymlinks="no"/>
+            <manifest>
+                <attribute name="Main-Class" value="cz.cas.asu.stelweb.fuky.observe.server.ObserveServer"/>
+                <!-- <attribute name="Class-Path" value="${manifest.classpath}"/> -->
+            </manifest>
+        </jar>
+
+        <jar destfile="./dist/observe-client.jar">
+            <fileset dir="./class" followsymlinks="yes"/>
+            <manifest>
+                <attribute name="Main-Class" value="cz.cas.asu.stelweb.fuky.observe.client.ObserveClient" />
+                <attribute name="Class-Path" value="${manifest.classpath}" /> 
+                <attribute name="Implementation-Title" value="ObserveClient" />
+                <attribute name="Implementation-Vendor" value="Astronomical Institute, Academy Sciences of the Czech Republic, v.v.i." />
+                <attribute name="Implementation-Version" value="${svnVersion}" />
+                <attribute name="Built-By" value="${user.name}" />
+                <attribute name="Built-Date" value="${buildDate}" />
+            </manifest>
+        </jar>
+
+        <property name="packageName" value="observe-client-r${svnVersion}" />
+        <property name="destDir" value="./dist/${packageName}" />
+
+        <mkdir dir="${destDir}" />
+        <mkdir dir="${destDir}/lib" />
+        <mkdir dir="${destDir}/properties" />
+
+        <copy file="./dist/observe-client.jar" todir="${destDir}" />
+        <copy file="./properties/observe-client.properties" todir="${destDir}/properties" />
+
+        <copy todir="${destDir}/lib">
+            <fileset dir="./lib/java" />
+        </copy>
+
+        <echo file="${destDir}/observe-client.sh">#!/bin/bash
+
+java -Dobserve.dir=$PWD -jar observe-client.jar</echo>
+
+        <chmod file="${destDir}/observe-client.sh" perm="ugo+rx" />
+
+        <echo file="${destDir}/observe-client.bat">java -Dobserve.dir=${basedir} -jar observe-client.jar</echo>
+
+        <zip destfile="./dist/${packageName}.zip">
+            <zipfileset dir="${destDir}" prefix="${packageName}" />
+        </zip>
+
+        <delete dir="${destDir}"/>
+    </target>
+</project>

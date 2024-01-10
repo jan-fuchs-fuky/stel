@@ -1,0 +1,17 @@
+#! /usr/bin/env bash
+
+SCRIPT_NAME=$(basename $0)
+RUN="/opt/exposed/bin/spectrograph_execute.py"
+IFS=";"
+
+case "$SCRIPT_NAME" in
+    s_collimators_open )
+        $RUN 'SPCH 3 1' 'SPCH 21 1'
+        ;;
+    s_collimators_closed )
+        $RUN 'SPCH 3 2' 'SPCH 21 2'
+        ;;
+    * )
+        $RUN $*
+        ;;
+esac

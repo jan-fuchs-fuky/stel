@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4c SYSTEM "">
+
+<log4c>
+
+    <config>
+        <bufsize>0</bufsize>
+        <debug level="2" />
+        <nocleanup>0</nocleanup>
+        <reread>1</reread>
+    </config>
+
+    <rollingpolicy name="exposed_rollingpolicy" type="sizewin" maxsize="10100100" maxnum="10" />
+    <appender name="exposed_fileappender" type="rollingfile" logdir="." prefix="/home/fuky/git/peso/log/exposed.log" layout="dated" rollingpolicy="exposed_rollingpolicy" />
+    <category name="exposed" priority="debug" appender="exposed_fileappender"/>
+
+</log4c>

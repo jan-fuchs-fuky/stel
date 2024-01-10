@@ -1,0 +1,24 @@
+ORIGIN   ; PESO                 ; Python Exposure System for Ondrejov                ; str
+OBSERVAT ; ONDREJOV             ; Name of observatory (IRAF style)                   ; str
+LATITUDE ; 49.910555            ; Telescope latitude  (degrees), +49:54:38.0         ; float
+LONGITUD ; 14.783611            ; Telescope longitud  (degrees), +14:47:01.0         ; float
+HEIGHT   ; 528                  ; Height above sea level [m].                        ; int
+TELESCOP ; ZEISS-2m             ; 2m Ondrejov observatory telescope                  ; str
+GAIN     ; 2                    ; Electrons per ADU                                  ; int
+READNOIS ; 10                   ; Readout noise in electrons per pix                 ; int
+TELSYST  ; COUDE                ; Telescope setup - COUDE or CASSegrain              ; str
+INSTRUME ; OES                  ; Coude echelle spectrograph                         ; str
+CAMERA   ; VERSARRAY 2048B      ; Camera head name                                   ; str
+DETECTOR ; EEV 2048x2048        ; Name of the detector                               ; str
+CHIPID   ; EEV 42-40-1-368      ; Name of CCD chip                                   ; str
+BUNIT    ; ADU                  ; Unit of the array of image data                    ; str
+PREFLASH ; 0                    ; Length of preflash in seconds                      ; int
+CCDXSIZE ; 2048                 ; X Size in pixels of digitised frame                ; int
+CCDYSIZE ; 2048                 ; Y Size in pixels of digitised frame                ; int
+CCDXPIXE ; 13.5                 ; Size in microns of the pixels, in X                ; float
+CCDYPIXE ; 13.5                 ; Size in microns of the pixels, in Y                ; float
+DISPAXIS ; 1                    ; Dispersion axis along lines                        ; int
+GRATNAME ; ECHELL               ; Grating name                                       ; str
+SLITTYPE ; BLADE                ; Type of slit - blade or image slicers              ; str
+AUTOGUID ; NO                   ; Status of autoguider system                        ; str
+SLITWID  ; 0.6                  ; Slit width in mm                                   ; float

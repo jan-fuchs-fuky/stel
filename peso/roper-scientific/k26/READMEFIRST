@@ -1,0 +1,44 @@
+The release of the 2.6 Kernel for Linux now requires all Kernel Sources AND Headers installed AND BUILT on your system.  You MUST then build the kernel Module AFTER building the kernel source tree.  If you do not know how to build the Linux Kernel, seek help from someone that knows how to build the kernel and loadable kernel modules.
+
+
+Once the Kernel module is built - Run the install_photomet.sh shell script.  This shell script will interrogate the system and find any Photometrics PCI cards and will create the /dev nodes for the cards that were found.  These are the nodes that allow the POSIX calls to make it to the kernel driver.  The shell script will then install the kernel module that you selected above and will put it in the correct system location.  Once this step is completed - The shell script will then install the PVCAM shared library in the proper location.
+
+The install_photomet.sh file will install the kernel loadable driver module AND the PVCAM static library.  The install_pvcam.sh file will ONLY install the PVCAM static library.  
+
+==========================> EXTREMELY IMPORTANT<==============================
+
+You MUST restart the Linux system after installation using the shell script referenced above.
+
+
+
+Directory contents:
+
+\KERNEL26\
+[CUSTOMER_examples]   [driverV26]           install_photomet.sh
+install_pvcam.sh      libpvcam.so.2.7.0.0   master.h
+PCILoader             pvcam.h               pvcam_linux.h
+pvpci.ko              READMEFIRST           
+
+\KERNEL26\CUSTOMER_examples\
+complxw.c        complxw.h
+getparam         [ini]            makefile
+master.h         pvcam.h          pvcam_linux.h    pvparam
+pvparam.c        pvstresstest.c   pvtest           pvtest.c
+pvtest.ini       pvtest.o         pvtest1.ini      pvtest10.ini
+pvtest2.ini      pvtest3.ini      pvtest4.ini      pvtest5.ini
+pvtest6.ini      pvtest7.ini      pvtest8.ini      pvtest9.ini
+setparam         SetParam.c       StandardAcq.c    stdacq
+
+\KERNEL26\CUSTOMER_examples\ini\
+contents.txt   pvtest.c       pvtest.ini
+pvtest1.ini    pvtest10.ini   pvtest2.ini    pvtest3.ini    pvtest4.ini
+pvtest5.ini    pvtest6.ini    pvtest7.ini    pvtest8.ini    pvtest9.ini	
+
+\KERNEL26\driverV26\
+.pvpci.ko.cmd      .pvpci.mod.o.cmd
+.pvpci.o.cmd       [.tmp_versions]    Makefile
+pvpci.c            pvpci.h            pvpci.ko           pvpci.mod.c
+pvpci.mod.o        pvpci.o        
+
+\KERNEL26\driverV26\.tmp_versions\
+pvpci.mod

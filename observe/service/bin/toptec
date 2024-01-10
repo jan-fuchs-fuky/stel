@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ssh tcsuser@pc-tubus.stel /home/tcsuser/bin/toptec "$*"

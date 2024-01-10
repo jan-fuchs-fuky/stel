@@ -1,0 +1,24 @@
+observe.server.port = 443
+
+observe.server.ssl = true
+observe.server.ssl.key.store.file = /keystore_server
+observe.server.ssl.key.store.password = asdfgh
+observe.server.ssl.trust.store.file = /truststore_server
+observe.server.ssl.trust.store.password = asdfgh
+
+#observe.server.log.filename = observe-server.log
+
+observe.server.jdbc.driver = org.apache.derby.jdbc.EmbeddedDriver
+observe.server.jdbc.protocol = jdbc:derby:
+
+# Telescope XML RPC server
+observe.xmlrpc.telescope.host = 127.0.0.1
+observe.xmlrpc.telescope.port = 9999
+
+# Spectrograph XML RPC server
+observe.xmlrpc.spectrograph.host = 127.0.0.1
+observe.xmlrpc.spectrograph.port = 8888
+
+# OES XML RPC server
+observe.xmlrpc.oes.host = 127.0.0.1
+observe.xmlrpc.oes.port = 5000

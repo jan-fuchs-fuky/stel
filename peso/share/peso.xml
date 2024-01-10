@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<peso>
+    <instrument>CCD400</instrument>
+    <ip>127.0.0.1</ip>
+    <port>5000</port>
+    <username>tcsuser</username>
+    <password>observ2m</password>
+    <archive>0</archive>
+    <autogenerate_filename>1</autogenerate_filename>
+    <menus>
+        <object>
+            <item>flat</item>
+            <item>comp</item>
+            <item>zero</item>
+            <item>dark</item>
+            <item>target</item>
+        </object>
+    </menus>
+    <ccd>
+        <temp>-110</temp>
+    </ccd>
+</peso>

@@ -1,0 +1,25 @@
+src/cz/cas/asu/stelweb/fuky/observe/client/Spectrograph.java:
+
+    private String gratingPos2Angle(String value)
+
+        angle = -0.00487106 * pos + 61.7024
+
+
+k = -0.00487106
+a = 61.7024
+
+k * 20 + a
+61.6049788
+
+- mřížka se nastaví na pozici 61°36'18" s využitím ručního tastru a osvětlené
+  stupnice, tato hodnota je mimo rozsah stupnice, tak se pro určení přibližné
+  hodnoty použije hodnota 58°, ProjectSoft SW brání jet na hodnotu menší než cca
+  -100 inkrementů, takže je třeba případně několikrát resetovat čidlo, aby se
+  dojelo na úhel, který má odpovídat 20 inkrementům
+
+- resetuje se poloha čidla mřížky pomocí spínače (oranžovým přípravkem v podobě
+  tužky), poté je hodnota 20 inkrementů
+
+- udělá se comp a pomocí ostřícího programu se zjistí offset oproti nějakému
+  staršímu snímku a případně se iteruje s resetem čidla dokud se nanastaví
+  přesnější poloha mřížky, comp může být třeba v halfa tj. 30°15'

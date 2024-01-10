@@ -1,0 +1,23 @@
+#!/bin/bash
+
+if [ `id -u` -eq 0 ]; then
+        echo "Ah, welcome O' Mighty One."
+else
+        echo "You must be superuser to run this script!"
+        exit 1
+fi
+
+mod="astropci"
+
+/sbin/modprobe -r $mod
+
+echo "Finished unloading module!"
+
+#  Print device list
+# +-------------------------------------------------------------+
+echo ""
+echo "  Device List  ( Should Be Empty )"
+echo "+--------------------------------------------------------+"
+ls -la /dev/$mod*
+echo ""
+

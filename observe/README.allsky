@@ -1,0 +1,11 @@
+# usermod -G dialout -a tcsuser
+
+# crontab -e
+*/1 * * * * /home/tcsuser/bin/pc_temp_allsky.py &>/dev/null
+
+./allsky_rs232.py d -o /home/tcsuser/allsky_sensors.log
+
+tcsuser@pc-allsky:~/alcor-system/python$ ./allsky.py
+
+./_tmp/aurora.py
+

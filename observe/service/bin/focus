@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 POSITION"
+    exit
+fi
+
+POSITION="$1"
+
+echo "SET focus position $POSITION"
+ssh tcsuser@pc-tubus.stel /home/tcsuser/bin/toptec M1 "$POSITION"
+
+echo "GET focus position"
+ssh tcsuser@pc-tubus.stel /home/tcsuser/bin/toptec P1

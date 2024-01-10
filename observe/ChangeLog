@@ -1,0 +1,20 @@
+2013-10-24 r630
+
+    * zalozka "Observe", panel "Exposure", vyber "Setup" obsahuje novou polozku
+      "unset", pokud se vybere a potvrdi tlacitkem "Set", tak se nebude
+      kontrolovat nastaveni DM, SF, GA
+
+    * do zalozky "Observe" (CCD400 a CCD700) pridan panel "Coude", ktery
+      zobrazuje informace o DM, SF, GA a EM
+
+    * pokud by se spustila zastarala verze klienta, tak se zobrazi varovani v
+      zalozce "Status of services"
+
+    * do textovych poli "Observers" a "Target" se nedovoli napsat vice nez 18
+      znaku
+
+    * snimek se zobrazi v DS9 okamzite po ulozeni na disk, a to i v pripade, ze
+      je soucasti sekvence nekolika expozic
+
+    * pokud se pro urceni delky expozice pouzije i expozimetr, tak se zobrazi
+      progressbar, ktery vizualizuje prubeh nacitani "count of pulses"

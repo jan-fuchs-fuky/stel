@@ -1,0 +1,94 @@
+https://wiki.debian.org/udev
+https://wiki.debian.org/DeviceManagement
+http://reactivated.net/writing_udev_rules.html
+
+# lsusb
+Bus 001 Device 002: ID 1347:0412 Moravian Instruments G1-0300 CCD
+Bus 001 Device 003: ID 1347:0406 Moravian Instruments Gx CCD-F CCD
+
+# lsusb -v
+  idVendor           0x1347 Moravian Instruments
+  idProduct          0x0412 G1-0300 CCD
+
+# ls -l /dev/bus/usb/001/002 
+crw-rw-r-- 1 root root /dev/bus/usb/001/002
+# ls -l /dev/bus/usb/001/003
+crw-rw-r-- 1 root root /dev/bus/usb/001/003
+
+# vim /etc/udev/rules.d/10-local.rules
+ATTR{idVendor}=="1347", ATTR{idProduct}=="0412", MODE="0600", OWNER="tcsuser"
+ATTR{idVendor}=="1347", ATTR{idProduct}=="0406", MODE="0600", OWNER="tcsuser"
+
+# udevadm control --reload-rules
+# udevadm trigger
+
+# ls -l /dev/bus/usb/001/003
+crw------- 1 tcsuser root /dev/bus/usb/001/003
+# ls -l /dev/bus/usb/001/002
+crw------- 1 tcsuser root /dev/bus/usb/001/002
+
+*** udevadm info ***
+
+# udevadm info -q path -n /dev/bus/usb/001/002
+/devices/pci0000:00/0000:00:15.0/usb1/1-4
+
+# udevadm info -q name -n /dev/bus/usb/001/002
+bus/usb/001/002
+
+# udevadm info -q property -n /dev/bus/usb/001/002
+DEVPATH=/devices/pci0000:00/0000:00:15.0/usb1/1-4
+DEVNAME=/dev/bus/usb/001/002
+DEVTYPE=usb_device
+DRIVER=usb
+PRODUCT=1347/412/0
+TYPE=255/255/255
+BUSNUM=001
+DEVNUM=002
+MAJOR=189
+MINOR=1
+SUBSYSTEM=usb
+USEC_INITIALIZED=7172215534883
+ID_VENDOR=Moravian_Instruments
+ID_VENDOR_ENC=Moravian\x20Instruments
+ID_VENDOR_ID=1347
+ID_MODEL=G1-0300
+ID_MODEL_ENC=G1-0300
+ID_MODEL_ID=0412
+ID_REVISION=0000
+ID_SERIAL=Moravian_Instruments_G1-0300_G1-0300-0001
+ID_SERIAL_SHORT=G1-0300-0001
+ID_BUS=usb
+ID_USB_INTERFACES=:ffffff:
+ID_VENDOR_FROM_DATABASE=Moravian Instruments
+ID_MODEL_FROM_DATABASE=G1-0300 CCD
+
+# udevadm info -q all -n /dev/bus/usb/001/002
+P: /devices/pci0000:00/0000:00:15.0/usb1/1-4
+N: bus/usb/001/002
+L: 0
+E: DEVPATH=/devices/pci0000:00/0000:00:15.0/usb1/1-4
+E: DEVNAME=/dev/bus/usb/001/002
+E: DEVTYPE=usb_device
+E: DRIVER=usb
+E: PRODUCT=1347/412/0
+E: TYPE=255/255/255
+E: BUSNUM=001
+E: DEVNUM=002
+E: MAJOR=189
+E: MINOR=1
+E: SUBSYSTEM=usb
+E: USEC_INITIALIZED=7172215534883
+E: ID_VENDOR=Moravian_Instruments
+E: ID_VENDOR_ENC=Moravian\x20Instruments
+E: ID_VENDOR_ID=1347
+E: ID_MODEL=G1-0300
+E: ID_MODEL_ENC=G1-0300
+E: ID_MODEL_ID=0412
+E: ID_REVISION=0000
+E: ID_SERIAL=Moravian_Instruments_G1-0300_G1-0300-0001
+E: ID_SERIAL_SHORT=G1-0300-0001
+E: ID_BUS=usb
+E: ID_USB_INTERFACES=:ffffff:
+E: ID_VENDOR_FROM_DATABASE=Moravian Instruments
+E: ID_MODEL_FROM_DATABASE=G1-0300 CCD
+

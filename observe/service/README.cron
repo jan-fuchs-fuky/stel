@@ -1,0 +1,2 @@
+sulafat,primula$ crontab -e
+0 12 * * * /opt/bin/clean_data_client.sh

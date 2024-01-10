@@ -1,0 +1,47 @@
+*** CentOS release 6.10 (Final) ***
+
+almisan# mknod /dev/rspipci0 c 177 0
+almisan# modprobe pipci
+almisan# /etc/init.d/exposed-sauron start
+
+https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html-single/deployment_guide/index#sec-Persistent_Module_Loading
+
+    almisan# less /etc/rc.sysinit
+
+        # Load other user-defined modules
+        for file in /etc/sysconfig/modules/*.modules ; do
+          [ -x $file ] && $file
+        done
+
+almisan# vim /etc/sysconfig/modules/pipci.modules
+
+    #!/bin/sh
+
+    mknod /dev/rspipci0 c 177 0 >/dev/null 2>&1
+
+    exec /sbin/modprobe pipci >/dev/null 2>&1
+
+almisan# chmod +x /etc/sysconfig/modules/pipci.modules
+
+Místo:
+
+    almisan# chkconfig --add exposed-sauron
+
+    almisan# chkconfig --list exposed-sauron
+    exposed-sauron  0:off   1:off   2:on    3:on    4:on    5:on    6:off
+
+    almisan# chkconfig --del exposed-sauron
+
+se použilo:
+
+    almisan# vim /etc/rc.local
+
+        #!/bin/sh
+        #
+        # This script will be executed *after* all the other init scripts.
+        # You can put your own initialization stuff in here if you don't
+        # want to do the full Sys V style init stuff.
+
+        /etc/init.d/exposed-sauron start
+
+        touch /var/lock/subsys/local

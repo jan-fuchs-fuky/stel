@@ -1,0 +1,10 @@
+Opravit:
+
+    Traceback (most recent call last):
+      File "/opt/mi/mi_2020-07-20/bin/fiber_pointing_client.py", line 613, in loopLoadFits
+        percent = elapsed_time / (exposure_time / 100.0)
+    ZeroDivisionError: float division by zero
+
+- G2: informovat uživatele, že se již filtr dotočil, do té doby blokovat
+  spuštění expozice, pokud by vypršel timeout, tak se o tom uživatel informuje
+  a expozice se mu povolí

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+while [ true ]; do
+    echo "Sync data"
+    date
+    rsync -a root@pc-tubus:/tmp/*.fit . && rsync -a /data/fotometrie sulafat:/data/
+    sleep 3
+done

@@ -1,0 +1,74 @@
+*** primula ***
+
+root@nfs-i.stel# vim /home/data2m/.ssh/authorized_keys
+command="/home/data2m/bin/lsyncd_rsync.sh",no-pty,no-agent-forwarding,no-port-forwarding,no-X11-forwarding ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBwhEY+n7CCVZrIkSy4cUPD1Mg6RQIhNJfz0vZHHIRt2 lsyncd@observe
+
+
+root@nfs-i.stel# vim /home/data2m/bin/lsyncd_rsync.sh
+#!/bin/bash
+
+DEST_PATH=${SSH_ORIGINAL_COMMAND##* }
+
+if [ "$DEST_PATH" == "pointing/" ]; then
+    DEST_PATH="/share/nfs/2m/pointing/INCOMING"
+elif [ "$DEST_PATH" == "fotometrie/" ]; then
+    DEST_PATH="/share/nfs/2m/fotometrie/INCOMING"
+else
+    logger -p warn "WARNING: lsyncd_rsync.sh rejected: $SSH_CONNECTION $SSH_ORIGINAL_COMMAND"
+    echo "rejected" >/dev/stderr
+    exit 1
+fi
+
+logger "lsyncd_rsync.sh: $SSH_CONNECTION $SSH_ORIGINAL_COMMAND"
+exec rsync --server -logDtpre.iLsfxC . "$DEST_PATH"
+
+
+root@nfs-i.stel# tail -f /var/log/syslog
+
+
+primula# cat /var/log/lsyncd/lsyncd.log
+primula# cat /var/log/lsyncd/lsyncd.status
+
+primula# systemctl status lsyncd.service
+
+primula# cat /etc/lsyncd/lsyncd.conf.lua
+----
+-- User configuration file for lsyncd.
+--                        
+settings {        
+    statusInterval = 1,
+    logfile    = "/var/log/lsyncd/lsyncd.log",
+    statusFile = "/var/log/lsyncd/lsyncd.status",
+    insist = true,
+--    nodaemon   = true,
+} 
+                  
+sync {
+    default.rsync,
+    delay=5,
+    source="/data/pointing/INCOMING/",
+    target="data2m@nfs-i.stel:pointing",
+    delete=false,
+
+    rsync = {
+       protect_args=false,
+        _extra = {
+          "-a",
+        }
+    }
+}
+
+sync {
+    default.rsync,
+    delay=5,
+    source="/data/fotometrie/INCOMING/",
+    target="data2m@nfs-i.stel:fotometrie",
+    delete=false,
+
+    rsync = {
+       protect_args=false,
+        _extra = {
+          "-a",
+        }
+    }
+}

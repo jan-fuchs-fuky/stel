@@ -1,0 +1,56 @@
+body {
+    padding: 10px;
+    background-color: #cccc99;
+    color: #000000;
+}
+
+table.layout {
+    border: 1px solid #007f00;
+    background: #FFFFFF;
+    width: 1141px;
+}
+
+table.layout td.body {
+    vertical-align: top;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+a {
+    text-decoration: none;
+    padding: 0px;
+    color: #007f00;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #000000;
+}
+
+table.users td, th {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 0px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+table.users {
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px dashed #007f00;
+}
+
+form {
+    margin: 5px;
+}
+
+form.action {
+    margin: 0px;
+}

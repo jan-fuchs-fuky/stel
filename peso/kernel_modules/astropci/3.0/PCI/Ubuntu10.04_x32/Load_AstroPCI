@@ -1,0 +1,93 @@
+#!/bin/bash
+# +-------------------------------------------------------------+
+#  Script for auto-loading PCI driver on every boot. Must be
+#  superuser to run this script. Verify driver installation with
+#  list printed at the end of installation.
+#
+#  Notes:  For debugging, use: /sbin/insmod -f astropci and
+#          /sbin/rmmod astropci
+# +-------------------------------------------------------------+
+
+if [ `id -u` -eq 0 ]; then
+        echo "Ah, welcome O' Mighty One."
+else
+        echo "You must be superuser to run this script!"
+        exit 1
+fi
+
+
+#  Kernel module directory
+# +-------------------------------------------------------------+
+modDir="/lib/modules/`uname -r`"
+
+
+#  Module name prefix
+# +-------------------------------------------------------------+
+mod="astropci"
+
+
+#  Kernel module link
+# +-------------------------------------------------------------+
+file=$modDir"/weak-updates/"$mod".ko"
+
+
+#  Permissions rul file
+# +-------------------------------------------------------------+
+rulesFile="/etc/udev/rules.d/52-astropci.rules"
+
+
+#  Copy the module to the kernel module directory
+# +-------------------------------------------------------------+
+cp $mod.ko $modDir/extra
+
+
+#  Create the kernel module link
+# +-------------------------------------------------------------+
+if [ ! -L $file ]; then
+	echo "Creating module link ..."
+	ln -s $modDir/extra/$mod.ko $modDir/weak-updates/$mod.ko
+else
+	echo "Awesome! The module link already exists!"
+fi
+
+
+#  Resolve module dependencies - Prevents "FATAL: module not
+#  found" error.
+# +-------------------------------------------------------------+
+/sbin/depmod -a
+
+
+#  Install the module
+# +-------------------------------------------------------------+
+/sbin/modprobe astropci
+
+sleep 1.5
+
+
+#  Set the module permissions
+# +-------------------------------------------------------------+
+`chmod a+rw /dev/$mod*`
+
+if [ ! -e $rulesFile ]; then
+	echo KERNEL==\"$mod*\",NAME=\"%k\",MODE=\"0666\",OPTIONS=\"last_rule\" > $rulesFile
+else
+	echo "Awesome! Module permissions file already exists!"
+fi
+
+
+#  Print device list
+# +-------------------------------------------------------------+
+echo ""
+echo "  Device List  ( Should Not Be Empty )"
+echo "+--------------------------------------------------------+"
+ls -la /dev/$mod*
+echo ""
+
+echo ""
+echo "If the device list is empty, then reboot and run this script again!"
+echo ""
+
+echo ""
+echo "!!!IMPORTANT: See READ_ME for allocating the image buffer. Also, you may need to REBOOT!"
+echo ""
+
